@@ -348,10 +348,13 @@
 
     .logo-coin {
       position: relative;
+      display: block;
       width: min(100%, 390px);
       margin: 0 auto;
       transform-style: preserve-3d;
+      transform-origin: center center;
       animation: logoCoinSpin 14s linear infinite;
+      will-change: transform;
     }
 
     .logo-coin::before,
