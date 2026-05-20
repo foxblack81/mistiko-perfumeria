@@ -339,7 +339,8 @@
       border: 1px solid var(--line);
       background:
         linear-gradient(to bottom, rgba(255, 255, 255, .04), rgba(0, 0, 0, .36)),
-        var(--image) center / cover;
+        var(--image) center / contain no-repeat;
+      background-color: #fff;
       box-shadow: var(--shadow);
       filter: grayscale(.25);
     }
@@ -368,12 +369,13 @@
     .photo-story img {
       width: 100%;
       height: 430px;
-      object-fit: cover;
+      object-fit: contain;
+      background: #fff;
       filter: grayscale(.12) contrast(1.04);
     }
 
     .photo-story.featured img {
-      height: 520px;
+      height: 560px;
     }
 
     .photo-story figcaption {
@@ -411,7 +413,8 @@
       border: 1px solid var(--line);
       background:
         linear-gradient(to bottom, rgba(255, 255, 255, .02), rgba(0, 0, 0, .34)),
-        url("https://emprendeconperfumeria.com/images/portada-video.png") center / cover;
+        url("https://emprendeconperfumeria.com/images/portada-video.png") center / contain no-repeat;
+      background-color: #fff;
       filter: grayscale(.18);
     }
 
@@ -463,8 +466,9 @@
 
     .kit-slide img {
       width: 100%;
-      height: 300px;
-      object-fit: cover;
+      height: 340px;
+      object-fit: contain;
+      background: #fff;
       filter: grayscale(.12) contrast(1.03);
     }
 
@@ -617,7 +621,8 @@
       border: 1px solid var(--line);
       background:
         linear-gradient(to bottom, rgba(255, 255, 255, .04), rgba(0, 0, 0, .3)),
-        url("https://emprendeconperfumeria.com/images/Motivacion.jpeg") center / cover;
+        url("https://emprendeconperfumeria.com/images/Motivacion.jpeg") center / contain no-repeat;
+      background-color: #fff;
       box-shadow: var(--shadow);
       filter: grayscale(.16);
     }
@@ -734,7 +739,8 @@
       .photo-story img,
       .photo-story.featured img {
         height: auto;
-        aspect-ratio: 4 / 5;
+        max-height: none;
+        aspect-ratio: auto;
       }
 
       .kit-track {
@@ -789,7 +795,7 @@
       }
 
       .kit-slide img {
-        height: 280px;
+        height: 320px;
       }
 
       .section {
