@@ -10,17 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --white: #f8f8f6;
-      --paper: #ffffff;
-      --silver: #c7ccd1;
-      --silver-dark: #7d8389;
-      --red: #555d64;
-      --red-2: #aeb6bd;
-      --ink: #171717;
-      --muted: #696969;
-      --line: rgba(125, 131, 137, .34);
-      --shadow: 0 24px 70px rgba(22, 22, 22, .14);
-      --metal: linear-gradient(135deg, #8d9298 0%, #ffffff 28%, #c7ccd1 54%, #f5f5f3 74%, #858b91 100%);
+      --white: #060708;
+      --paper: #101214;
+      --silver: #d8dde2;
+      --silver-dark: #8f989f;
+      --red: #d8dde2;
+      --red-2: #6f767d;
+      --ink: #f4f6f7;
+      --muted: #aeb6bd;
+      --line: rgba(216, 221, 226, .22);
+      --shadow: 0 28px 80px rgba(0, 0, 0, .52);
+      --metal: linear-gradient(135deg, #42474d 0%, #f4f6f7 30%, #aeb6bd 56%, #ffffff 74%, #555d64 100%);
     }
 
     * {
@@ -35,9 +35,9 @@
       margin: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at 15% 0%, rgba(199, 204, 209, .62), transparent 34%),
-        radial-gradient(circle at 90% 12%, rgba(157, 0, 18, .14), transparent 30%),
-        linear-gradient(180deg, #fff 0%, var(--white) 46%, #ececea 100%);
+        radial-gradient(circle at 15% 0%, rgba(216, 221, 226, .22), transparent 34%),
+        radial-gradient(circle at 86% 8%, rgba(143, 152, 159, .18), transparent 30%),
+        linear-gradient(145deg, #020303 0%, #111417 42%, #050607 100%);
       font-family: "Montserrat", Arial, sans-serif;
       line-height: 1.65;
       overflow-x: hidden;
@@ -49,8 +49,8 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(125, 131, 137, .14) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(125, 131, 137, .1) 1px, transparent 1px);
+        linear-gradient(rgba(216, 221, 226, .06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(216, 221, 226, .045) 1px, transparent 1px);
       background-size: 72px 72px;
       mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .42), transparent 78%);
       z-index: -1;
@@ -76,9 +76,9 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, .86);
+      background: rgba(4, 5, 6, .88);
       backdrop-filter: blur(18px);
-      box-shadow: 0 14px 42px rgba(0, 0, 0, .07);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, .48);
     }
 
     .nav {
@@ -104,8 +104,8 @@
       place-items: center;
       border: 1px solid var(--line);
       border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 10px 28px rgba(157, 0, 18, .1);
+      background: linear-gradient(145deg, #f8f8f8, #858b91);
+      box-shadow: 0 10px 28px rgba(216, 221, 226, .16);
       overflow: hidden;
     }
 
@@ -145,7 +145,7 @@
       display: flex;
       align-items: center;
       gap: 26px;
-      color: rgba(23, 23, 23, .78);
+      color: rgba(244, 246, 247, .78);
       font-size: .8rem;
       font-weight: 800;
       letter-spacing: .08em;
@@ -212,9 +212,9 @@
       inset: 0;
       z-index: -2;
       background:
-        linear-gradient(90deg, rgba(255, 255, 255, .98) 0%, rgba(255, 255, 255, .9) 44%, rgba(255, 255, 255, .42) 100%),
+        linear-gradient(90deg, rgba(2, 3, 3, .96) 0%, rgba(8, 10, 11, .86) 48%, rgba(10, 11, 12, .34) 100%),
         url("https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg") center / cover;
-      filter: saturate(.25) contrast(1.08);
+      filter: saturate(.18) contrast(1.12) brightness(.72);
     }
 
     .hero::after {
@@ -223,7 +223,7 @@
       inset: 0;
       z-index: -1;
       background:
-        radial-gradient(circle at 64% 36%, rgba(199, 204, 209, .45), transparent 26%),
+        radial-gradient(circle at 64% 36%, rgba(216, 221, 226, .18), transparent 26%),
         linear-gradient(to bottom, transparent 0%, var(--white) 96%);
     }
 
@@ -272,7 +272,7 @@
     .hero-copy {
       max-width: 720px;
       margin: 28px 0 34px;
-      color: rgba(23, 23, 23, .82);
+      color: rgba(244, 246, 247, .82);
       font-size: clamp(1.05rem, 2vw, 1.24rem);
     }
 
@@ -287,7 +287,7 @@
       isolation: isolate;
       padding: 34px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .82);
+      background: linear-gradient(145deg, rgba(18, 20, 22, .88), rgba(4, 5, 6, .82));
       box-shadow: var(--shadow);
       perspective: 1000px;
       overflow: hidden;
@@ -460,13 +460,13 @@
 
     .section-lead {
       margin: 0;
-      color: rgba(23, 23, 23, .76);
+      color: rgba(244, 246, 247, .74);
       font-size: 1.02rem;
     }
 
     .panel {
       border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(238, 238, 236, .78));
+      background: linear-gradient(145deg, rgba(20, 23, 26, .94), rgba(8, 9, 10, .82));
       box-shadow: var(--shadow);
     }
 
@@ -476,7 +476,7 @@
 
     .text-panel p {
       margin: 0 0 20px;
-      color: rgba(23, 23, 23, .78);
+      color: rgba(244, 246, 247, .78);
       font-size: 1rem;
     }
 
@@ -497,7 +497,7 @@
       background:
         linear-gradient(to bottom, rgba(255, 255, 255, .04), rgba(0, 0, 0, .36)),
         var(--image) center / contain no-repeat;
-      background-color: #fff;
+      background-color: #070809;
       box-shadow: var(--shadow);
       filter: grayscale(.25);
     }
@@ -511,7 +511,7 @@
     .photo-story {
       margin: 0;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .92);
+      background: linear-gradient(145deg, rgba(20, 23, 26, .94), rgba(8, 9, 10, .82));
       box-shadow: 0 16px 40px rgba(0, 0, 0, .12);
       overflow: hidden;
     }
@@ -527,7 +527,7 @@
       width: 100%;
       height: 430px;
       object-fit: contain;
-      background: #fff;
+      background: #08090a;
       filter: grayscale(.12) contrast(1.04);
     }
 
@@ -547,7 +547,7 @@
 
     .photo-story p {
       margin: 0 0 14px;
-      color: rgba(23, 23, 23, .78);
+      color: rgba(244, 246, 247, .78);
     }
 
     .photo-story p:last-child {
@@ -561,7 +561,7 @@
       align-items: center;
       padding: 30px;
       border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(238, 238, 236, .78));
+      background: linear-gradient(145deg, rgba(20, 23, 26, .94), rgba(8, 9, 10, .82));
       box-shadow: var(--shadow);
     }
 
@@ -571,7 +571,7 @@
       background:
         linear-gradient(to bottom, rgba(255, 255, 255, .02), rgba(0, 0, 0, .34)),
         url("https://emprendeconperfumeria.com/images/portada-video.png") center / contain no-repeat;
-      background-color: #fff;
+      background-color: #070809;
       filter: grayscale(.18);
     }
 
@@ -588,7 +588,7 @@
     .original-order-title p {
       max-width: 720px;
       margin: 14px auto 0;
-      color: rgba(23, 23, 23, .76);
+      color: rgba(244, 246, 247, .74);
       font-size: 1.02rem;
     }
 
@@ -596,7 +596,7 @@
       margin-top: 26px;
       position: relative;
       border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(238, 238, 236, .78));
+      background: linear-gradient(145deg, rgba(20, 23, 26, .94), rgba(8, 9, 10, .82));
       box-shadow: var(--shadow);
       overflow-x: auto;
       overflow-y: hidden;
@@ -623,7 +623,7 @@
       place-items: center;
       border: 1px solid rgba(125, 131, 137, .32);
       border-radius: 50%;
-      background: rgba(255, 255, 255, .92);
+      background: rgba(10, 12, 14, .92);
       color: var(--red);
       box-shadow: 0 18px 34px rgba(0, 0, 0, .16);
       cursor: pointer;
@@ -696,7 +696,7 @@
       width: min(78vw, 330px);
       flex: 0 0 auto;
       border: 1px solid var(--line);
-      background: #fff;
+      background: linear-gradient(180deg, #15181a, #070809);
       box-shadow: 0 16px 36px rgba(0, 0, 0, .1);
       overflow: hidden;
     }
@@ -705,7 +705,7 @@
       width: 100%;
       height: 340px;
       object-fit: contain;
-      background: #fff;
+      background: #070809;
       filter: grayscale(.12) contrast(1.03);
       user-select: none;
       -webkit-user-drag: none;
@@ -728,14 +728,14 @@
       margin: 0 0 12px;
       padding: 0;
       list-style: none;
-      color: rgba(23, 23, 23, .82);
+      color: rgba(244, 246, 247, .82);
       font-size: .92rem;
       font-weight: 800;
     }
 
     .kit-note {
       margin: 0;
-      color: rgba(23, 23, 23, .68);
+      color: rgba(244, 246, 247, .68);
       font-size: .86rem;
       font-weight: 700;
     }
@@ -765,8 +765,8 @@
       padding: 34px;
       border: 1px solid var(--line);
       background:
-        radial-gradient(circle at 50% 0%, rgba(199, 204, 209, .42), transparent 28%),
-        linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(238, 238, 236, .8));
+        radial-gradient(circle at 50% 0%, rgba(216, 221, 226, .2), transparent 28%),
+        linear-gradient(145deg, rgba(20, 23, 26, .96), rgba(6, 7, 8, .86));
       box-shadow: var(--shadow);
     }
 
@@ -790,7 +790,7 @@
       min-height: 142px;
       padding: 22px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .82);
+      background: rgba(20, 23, 26, .82);
       box-shadow: 0 16px 40px rgba(0, 0, 0, .08);
     }
 
@@ -814,7 +814,7 @@
       display: flex;
       gap: 12px;
       align-items: flex-start;
-      color: rgba(23, 23, 23, .78);
+      color: rgba(244, 246, 247, .78);
       font-weight: 600;
     }
 
@@ -838,7 +838,7 @@
     .statement {
       padding: 30px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .84);
+      background: rgba(20, 23, 26, .84);
       box-shadow: 0 16px 42px rgba(0, 0, 0, .08);
     }
 
@@ -861,7 +861,7 @@
       background:
         linear-gradient(to bottom, rgba(255, 255, 255, .04), rgba(0, 0, 0, .3)),
         url("https://emprendeconperfumeria.com/images/Motivacion.jpeg") center / contain no-repeat;
-      background-color: #fff;
+      background-color: #070809;
       box-shadow: var(--shadow);
       filter: grayscale(.16);
     }
@@ -882,7 +882,7 @@
     .contact-item {
       padding: 18px 20px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .86);
+      background: rgba(20, 23, 26, .86);
       font-weight: 700;
     }
 
@@ -913,7 +913,7 @@
       border: 1px solid var(--line);
       box-shadow: 0 16px 40px rgba(0, 0, 0, .1);
       overflow: hidden;
-      background: #fff;
+      background: #070809;
     }
 
     .map-frame iframe {
@@ -927,8 +927,8 @@
     .footer {
       padding: 42px 0;
       border-top: 1px solid var(--line);
-      background: #f2f2f0;
-      color: rgba(23, 23, 23, .66);
+      background: #050607;
+      color: rgba(244, 246, 247, .66);
       font-size: .9rem;
     }
 
