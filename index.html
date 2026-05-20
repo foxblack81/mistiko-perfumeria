@@ -1650,15 +1650,44 @@
 
   <a class="mobile-cta" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20informacion%20sobre%20los%20kits%20de%20perfumeria.">Contactanos</a>
   <script>
-    (() => {
+    (async () => {
       const carousel = document.querySelector('.kit-carousel');
       if (!carousel) return;
 
       const track = carousel.querySelector('.kit-track');
       if (!track) return;
-      const slides = Array.from(track.querySelectorAll('.kit-slide'));
       const previousButton = document.querySelector('.kit-arrow.prev');
       const nextButton = document.querySelector('.kit-arrow.next');
+      const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+
+      const createKitSlide = (kit) => `
+        <figure class="kit-slide">
+          <img src="${escapeHtml(kit.image)}" alt="${escapeHtml(kit.alt || kit.title)}">
+          <figcaption>
+            <h3>${escapeHtml(kit.title)}</h3>
+            ${Array.isArray(kit.prices) && kit.prices.length ? `<ul class="kit-price">${kit.prices.map((price) => `<li>${escapeHtml(price)}</li>`).join("")}</ul>` : ""}
+            ${kit.note ? `<p class="kit-note">${escapeHtml(kit.note)}</p>` : ""}
+          </figcaption>
+        </figure>
+      `;
+
+      try {
+        const response = await fetch("/api/kits", { cache: "no-store" });
+        const data = await response.json();
+        if (Array.isArray(data.items) && data.items.length) {
+          track.innerHTML = data.items.map(createKitSlide).join("");
+        }
+      } catch {
+        // Si la configuracion no carga, se conservan los kits escritos en el HTML.
+      }
+
+      const slides = Array.from(track.querySelectorAll('.kit-slide'));
 
       slides.forEach((slide) => {
         const clone = slide.cloneNode(true);

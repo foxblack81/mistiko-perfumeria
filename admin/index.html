@@ -79,7 +79,8 @@
       font-size: .78rem;
     }
 
-    input {
+    input,
+    textarea {
       width: 100%;
       min-height: 48px;
       border: 1px solid var(--line);
@@ -91,6 +92,12 @@
 
     input[type="file"] {
       padding: 12px;
+    }
+
+    textarea {
+      min-height: 112px;
+      padding: 12px 14px;
+      resize: vertical;
     }
 
     button, .button {
@@ -147,8 +154,38 @@
       gap: 10px;
     }
 
+    .kit-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .kit-editor {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .05);
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .kit-editor h3 {
+      margin: 0;
+      color: var(--silver);
+      font-family: Cinzel, Georgia, serif;
+    }
+
+    .kit-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .kit-fields label.full {
+      grid-column: 1 / -1;
+    }
+
     @media (max-width: 760px) {
-      .grid, .topbar {
+      .grid, .topbar, .kit-fields {
         grid-template-columns: 1fr;
         display: grid;
       }
@@ -197,6 +234,17 @@
       <h2>PDFs publicados</h2>
       <div class="pdf-list" id="pdfList"></div>
     </section>
+
+    <section class="panel hidden" id="kitPanel" style="margin-top:22px;">
+      <h2>Kits y precios del inicio</h2>
+      <p>Edita los kits que aparecen en el carrusel de la pagina principal. Escribe cada precio o detalle en una linea separada.</p>
+      <div class="pdf-actions">
+        <button id="addKit" type="button">Agregar kit</button>
+        <button id="saveKits" type="button">Guardar kits</button>
+      </div>
+      <p class="status" id="kitStatus"></p>
+      <div class="kit-list" id="kitList"></div>
+    </section>
   </main>
 
   <script>
@@ -204,12 +252,16 @@
     const uploadForm = document.querySelector("#uploadForm");
     const statusBox = document.querySelector("#status");
     const listBox = document.querySelector("#pdfList");
+    const kitPanel = document.querySelector("#kitPanel");
+    const kitList = document.querySelector("#kitList");
+    const kitStatus = document.querySelector("#kitStatus");
     const authKey = "mistikoAdminAuth";
 
     const getAuth = () => sessionStorage.getItem(authKey) || "";
     const setLoggedIn = (loggedIn) => {
       loginForm.classList.toggle("hidden", loggedIn);
       uploadForm.classList.toggle("hidden", !loggedIn);
+      kitPanel.classList.toggle("hidden", !loggedIn);
     };
 
     const formatSize = (size) => {
@@ -243,6 +295,64 @@
       });
     }
 
+    const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[char]));
+
+    function renderKitEditors(items) {
+      kitList.innerHTML = "";
+      items.forEach((kit, index) => {
+        const article = document.createElement("article");
+        article.className = "kit-editor";
+        article.innerHTML = `
+          <h3>Kit ${index + 1}</h3>
+          <div class="kit-fields">
+            <label>Nombre del kit
+              <input data-field="title" value="${escapeHtml(kit.title)}">
+            </label>
+            <label>Texto alternativo
+              <input data-field="alt" value="${escapeHtml(kit.alt || kit.title)}">
+            </label>
+            <label class="full">URL de imagen
+              <input data-field="image" value="${escapeHtml(kit.image)}">
+            </label>
+            <label class="full">Precios y detalles
+              <textarea data-field="prices">${escapeHtml((kit.prices || []).join("\n"))}</textarea>
+            </label>
+            <label class="full">Nota
+              <textarea data-field="note">${escapeHtml(kit.note || "")}</textarea>
+            </label>
+          </div>
+          <div class="pdf-actions">
+            <button class="secondary" type="button" data-move-up="${index}">Subir</button>
+            <button class="secondary" type="button" data-move-down="${index}">Bajar</button>
+            <button class="danger" type="button" data-remove-kit="${index}">Eliminar kit</button>
+          </div>
+        `;
+        kitList.appendChild(article);
+      });
+    }
+
+    function readKitEditors() {
+      return Array.from(kitList.querySelectorAll(".kit-editor")).map((article) => ({
+        title: article.querySelector('[data-field="title"]').value.trim(),
+        alt: article.querySelector('[data-field="alt"]').value.trim(),
+        image: article.querySelector('[data-field="image"]').value.trim(),
+        prices: article.querySelector('[data-field="prices"]').value.split("\n").map((line) => line.trim()).filter(Boolean),
+        note: article.querySelector('[data-field="note"]').value.trim()
+      }));
+    }
+
+    async function loadKits() {
+      const response = await fetch("/api/kits", { cache: "no-store" });
+      const data = await response.json();
+      renderKitEditors(data.items || []);
+    }
+
     loginForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const user = document.querySelector("#user").value.trim();
@@ -250,6 +360,9 @@
       sessionStorage.setItem(authKey, `Basic ${btoa(`${user}:${pass}`)}`);
       setLoggedIn(true);
       statusBox.textContent = "Sesion iniciada.";
+      loadKits().catch(() => {
+        kitStatus.textContent = "No se pudieron cargar los kits.";
+      });
     });
 
     uploadForm.addEventListener("submit", async (event) => {
@@ -293,6 +406,57 @@
       await loadPdfs();
     });
 
+    kitList.addEventListener("click", (event) => {
+      const removeButton = event.target.closest("[data-remove-kit]");
+      const upButton = event.target.closest("[data-move-up]");
+      const downButton = event.target.closest("[data-move-down]");
+      if (!removeButton && !upButton && !downButton) return;
+
+      const items = readKitEditors();
+      const index = Number((removeButton || upButton || downButton).dataset.removeKit ?? (upButton || downButton).dataset.moveUp ?? downButton?.dataset.moveDown);
+
+      if (removeButton) {
+        items.splice(index, 1);
+      } else if (upButton && index > 0) {
+        [items[index - 1], items[index]] = [items[index], items[index - 1]];
+      } else if (downButton && index < items.length - 1) {
+        [items[index + 1], items[index]] = [items[index], items[index + 1]];
+      }
+
+      renderKitEditors(items);
+    });
+
+    document.querySelector("#addKit").addEventListener("click", () => {
+      const items = readKitEditors();
+      items.push({
+        title: "Nuevo kit",
+        alt: "Nuevo kit Mistiko",
+        image: "https://emprendeconperfumeria.com/images/Productos/producto1.jpeg",
+        prices: ["Precio: $0"],
+        note: ""
+      });
+      renderKitEditors(items);
+    });
+
+    document.querySelector("#saveKits").addEventListener("click", async () => {
+      kitStatus.textContent = "Guardando kits...";
+      const response = await fetch("/api/kits", {
+        method: "PUT",
+        headers: {
+          Authorization: getAuth(),
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ items: readKitEditors() })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        kitStatus.textContent = data.error || "No se pudieron guardar los kits.";
+        return;
+      }
+      kitStatus.textContent = "Kits guardados correctamente.";
+      renderKitEditors(data.items || []);
+    });
+
     document.querySelector("#logout").addEventListener("click", () => {
       sessionStorage.removeItem(authKey);
       setLoggedIn(false);
@@ -300,6 +464,11 @@
 
     setLoggedIn(Boolean(getAuth()));
     loadPdfs();
+    if (getAuth()) {
+      loadKits().catch(() => {
+        kitStatus.textContent = "No se pudieron cargar los kits.";
+      });
+    }
   </script>
 </body>
 </html>
