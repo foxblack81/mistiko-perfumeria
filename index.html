@@ -866,6 +866,41 @@
       filter: grayscale(.16);
     }
 
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .pdf-card {
+      display: grid;
+      gap: 16px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(216, 221, 226, .14), transparent 34%),
+        linear-gradient(145deg, rgba(20, 23, 26, .95), rgba(6, 7, 8, .86));
+      box-shadow: var(--shadow);
+    }
+
+    .pdf-card h3 {
+      color: var(--red);
+      font-size: clamp(1.45rem, 3vw, 2.25rem);
+    }
+
+    .pdf-card p {
+      margin: 0;
+      color: rgba(244, 246, 247, .76);
+    }
+
+    .pdf-meta {
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, .8fr) minmax(280px, .7fr);
@@ -961,6 +996,7 @@
       .two-col,
       .video-block,
       .motivation,
+      .pdf-grid,
       .contact-grid {
         grid-template-columns: 1fr;
       }
@@ -1104,7 +1140,7 @@
       </a>
       <nav class="nav-links" aria-label="Navegacion principal">
         <a href="#kits">Kits</a>
-        <a href="/precios">Precios</a>
+        <a href="#precios">Precios</a>
         <a href="#modelo">Servicios</a>
         <a href="#quienes-somos">Quienes somos</a>
         <a href="#contacto">Contacto</a>
@@ -1395,6 +1431,38 @@
         <div class="panel text-panel">
           <p>Conoce nuestra variedad de esencias para perfumes y valida la disponibilidad directamente con Perfumeria Mistiko.</p>
           <a class="btn" href="https://perfumeriamistiko.github.io">Explora aqui nuestra variedad de esencias</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="precios">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Catalogos PDF</span>
+            <h2>Listas de precios y catalogos disponibles</h2>
+          </div>
+          <p class="section-lead">Consulta los catalogos oficiales de Perfumeria Mistiko para revisar productos, insumos y referencias disponibles.</p>
+        </div>
+        <div class="pdf-grid">
+          <article class="pdf-card">
+            <span class="pdf-meta">Catalogo general</span>
+            <h3>Catalogo Mistiko</h3>
+            <p>Catalogo principal con productos de Perfumeria Mistiko para venta al por mayor y detal.</p>
+            <div class="whatsapp-row">
+              <a class="btn" href="/api/pdfs/catalogomistiko-1779278819" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn silver" href="/api/pdfs/catalogomistiko-1779278819" download>Descargar</a>
+            </div>
+          </article>
+          <article class="pdf-card">
+            <span class="pdf-meta">Catalogo de insumos</span>
+            <h3>Catalogo Insumos Mistiko</h3>
+            <p>Catalogo de insumos para preparacion, esencias y materiales disponibles para emprendedores.</p>
+            <div class="whatsapp-row">
+              <a class="btn" href="/api/pdfs/catalogoinsumosmistiko-1779279011" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn silver" href="/api/pdfs/catalogoinsumosmistiko-1779279011" download>Descargar</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
