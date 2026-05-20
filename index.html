@@ -282,6 +282,39 @@
       gap: 14px;
     }
 
+    .hero-kit-callout {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 620px;
+      margin-top: 22px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(216, 221, 226, .18), transparent 34%),
+        linear-gradient(135deg, rgba(20, 23, 26, .92), rgba(6, 7, 8, .84));
+      box-shadow: 0 18px 46px rgba(0, 0, 0, .24);
+      color: rgba(244, 246, 247, .86);
+      font-weight: 800;
+    }
+
+    .hero-kit-callout strong {
+      color: var(--red);
+      font-family: "Cinzel", Georgia, serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kit-callout span {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .hero-kit-callout:hover {
+      transform: translateY(-2px);
+      border-color: rgba(216, 221, 226, .42);
+    }
+
     .logo-card {
       position: relative;
       isolation: isolate;
@@ -901,6 +934,14 @@
       text-transform: uppercase;
     }
 
+    .pdf-viewer {
+      width: 100%;
+      min-height: 520px;
+      border: 1px solid var(--line);
+      background: #070809;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .02);
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, .8fr) minmax(280px, .7fr);
@@ -1095,6 +1136,16 @@
         width: 100%;
       }
 
+      .hero-kit-callout {
+        width: 100%;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .pdf-viewer {
+        min-height: 430px;
+      }
+
       .text-panel,
       .statement {
         padding: 24px;
@@ -1160,6 +1211,10 @@
             <a class="btn" href="#kits">Ver kits</a>
             <a class="btn silver" href="#contacto">Hablar por WhatsApp</a>
           </div>
+          <a class="hero-kit-callout" href="#kits">
+            <strong>Kits con precios</strong>
+            <span>Haz click aqui y mira las opciones para empezar hoy.</span>
+          </a>
         </div>
         <aside class="logo-card">
           <span class="logo-coin">
@@ -1449,6 +1504,7 @@
             <span class="pdf-meta">Catalogo general</span>
             <h3>Catalogo Mistiko</h3>
             <p>Catalogo principal con productos de Perfumeria Mistiko para venta al por mayor y detal.</p>
+            <iframe class="pdf-viewer" src="/api/pdfs/catalogomistiko-1779278819" title="Catalogo Mistiko PDF"></iframe>
             <div class="whatsapp-row">
               <a class="btn" href="/api/pdfs/catalogomistiko-1779278819" target="_blank" rel="noopener">Abrir PDF</a>
               <a class="btn silver" href="/api/pdfs/catalogomistiko-1779278819" download>Descargar</a>
@@ -1458,6 +1514,7 @@
             <span class="pdf-meta">Catalogo de insumos</span>
             <h3>Catalogo Insumos Mistiko</h3>
             <p>Catalogo de insumos para preparacion, esencias y materiales disponibles para emprendedores.</p>
+            <iframe class="pdf-viewer" src="/api/pdfs/catalogoinsumosmistiko-1779279011" title="Catalogo Insumos Mistiko PDF"></iframe>
             <div class="whatsapp-row">
               <a class="btn" href="/api/pdfs/catalogoinsumosmistiko-1779279011" target="_blank" rel="noopener">Abrir PDF</a>
               <a class="btn silver" href="/api/pdfs/catalogoinsumosmistiko-1779279011" download>Descargar</a>
