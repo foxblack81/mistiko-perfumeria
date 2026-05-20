@@ -597,8 +597,7 @@
       box-shadow: var(--shadow);
       overflow-x: auto;
       overflow-y: hidden;
-      scroll-snap-type: x proximity;
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-x pan-y;
       overscroll-behavior-x: contain;
@@ -659,7 +658,6 @@
     .kit-carousel.is-dragging {
       cursor: grabbing;
       scroll-behavior: auto;
-      scroll-snap-type: none;
       user-select: none;
     }
 
@@ -682,13 +680,18 @@
       gap: 18px;
       padding: 22px;
       touch-action: pan-x pan-y;
+      will-change: transform;
+      animation: kitBelt 70s linear infinite;
+    }
+
+    .kit-carousel:hover .kit-track,
+    .kit-carousel:focus-within .kit-track {
+      animation-play-state: paused;
     }
 
     .kit-slide {
       width: min(78vw, 330px);
       flex: 0 0 auto;
-      scroll-snap-align: center;
-      scroll-snap-stop: normal;
       border: 1px solid var(--line);
       background: #fff;
       box-shadow: 0 16px 36px rgba(0, 0, 0, .1);
@@ -732,6 +735,15 @@
       color: rgba(23, 23, 23, .68);
       font-size: .86rem;
       font-weight: 700;
+    }
+
+    @keyframes kitBelt {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(calc(-50% - 9px));
+      }
     }
 
     .quote {
@@ -1060,7 +1072,6 @@
       }
 
       .kit-carousel {
-        scroll-snap-type: none;
         scroll-behavior: auto;
         cursor: default;
       }
@@ -1536,145 +1547,31 @@
 
       const track = carousel.querySelector('.kit-track');
       if (!track) return;
-      const originalSlides = track ? Array.from(track.querySelectorAll('.kit-slide')) : [];
+      const slides = Array.from(track.querySelectorAll('.kit-slide'));
       const previousButton = document.querySelector('.kit-arrow.prev');
       const nextButton = document.querySelector('.kit-arrow.next');
-      let active = false;
-      let startX = 0;
-      let startY = 0;
-      let startScroll = 0;
-      let moved = false;
-      let horizontalDrag = false;
-      let loopWidth = 0;
-      let isLoopResetting = false;
 
-      const cloneSlide = (slide) => {
+      slides.forEach((slide) => {
         const clone = slide.cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
         clone.tabIndex = -1;
-        return clone;
-      };
-
-      if (track && originalSlides.length) {
-        originalSlides.slice().reverse().forEach((slide) => {
-          track.insertBefore(cloneSlide(slide), track.firstChild);
-        });
-        originalSlides.forEach((slide) => {
-          track.appendChild(cloneSlide(slide));
-        });
-      }
-
-      const getStep = () => {
-        const slide = originalSlides[0] || carousel.querySelector('.kit-slide');
-        if (!slide) return;
-        const style = getComputedStyle(track);
-        const gap = Number.parseFloat(style.columnGap || style.gap) || 18;
-        return slide.getBoundingClientRect().width + gap;
-      };
-
-      const updateLoopWidth = () => {
-        const step = getStep();
-        loopWidth = step ? step * originalSlides.length : 0;
-        return loopWidth;
-      };
-
-      const centerCarousel = () => {
-        updateLoopWidth();
-        if (!loopWidth) return;
-        carousel.scrollLeft = loopWidth;
-      };
-
-      const normalizeInfiniteLoop = () => {
-        if (!loopWidth || isLoopResetting) return;
-        const step = getStep() || 1;
-        let nextPosition = null;
-
-        if (carousel.scrollLeft <= step) {
-          nextPosition = carousel.scrollLeft + loopWidth;
-        }
-
-        if (carousel.scrollLeft >= (loopWidth * 2) + step) {
-          nextPosition = carousel.scrollLeft - loopWidth;
-        }
-
-        if (nextPosition === null) return;
-        isLoopResetting = true;
-        carousel.style.scrollBehavior = 'auto';
-        carousel.scrollLeft = nextPosition;
-        requestAnimationFrame(() => {
-          carousel.style.scrollBehavior = '';
-          isLoopResetting = false;
-        });
-      };
-
-      const scrollByKit = (direction) => {
-        const step = getStep();
-        if (!step) return;
-        updateLoopWidth();
-        carousel.scrollBy({ left: direction * step, behavior: 'smooth' });
-      };
-
-      const stopDrag = () => {
-        if (!active) return;
-        active = false;
-        horizontalDrag = false;
-        carousel.classList.remove('is-dragging');
-      };
-
-      const startDrag = (clientX, clientY) => {
-        active = true;
-        moved = false;
-        horizontalDrag = false;
-        startX = clientX;
-        startY = clientY;
-        startScroll = carousel.scrollLeft;
-        carousel.classList.add('is-dragging');
-      };
-
-      const moveDrag = (clientX, clientY, event) => {
-        if (!active) return;
-        const distanceX = clientX - startX;
-        const distanceY = clientY - startY;
-
-        if (!horizontalDrag && Math.abs(distanceX) > 8 && Math.abs(distanceX) > Math.abs(distanceY)) {
-          horizontalDrag = true;
-        }
-
-        if (!horizontalDrag) return;
-        moved = true;
-        if (event && event.cancelable) event.preventDefault();
-        carousel.scrollLeft = startScroll - (distanceX * .82);
-      };
-
-      carousel.addEventListener('pointerdown', (event) => {
-        if (event.pointerType === 'touch') return;
-        if (event.pointerType === 'mouse' && event.button !== 0) return;
-        startDrag(event.clientX, event.clientY);
-        carousel.setPointerCapture(event.pointerId);
+        track.appendChild(clone);
       });
 
-      carousel.addEventListener('pointermove', (event) => {
-        moveDrag(event.clientX, event.clientY, event);
-      });
+      const nudgeBand = (direction) => {
+        const current = getComputedStyle(track).transform;
+        const matrix = current === 'none' ? new DOMMatrix() : new DOMMatrix(current);
+        track.animate(
+          [
+            { transform: `translateX(${matrix.m41}px)` },
+            { transform: `translateX(${matrix.m41 + (direction * 170)}px)` }
+          ],
+          { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' }
+        );
+      };
 
-      carousel.addEventListener('pointerup', () => stopDrag());
-      carousel.addEventListener('pointercancel', () => stopDrag());
-      carousel.addEventListener('lostpointercapture', () => stopDrag());
-
-      carousel.addEventListener('scroll', () => {
-        window.requestAnimationFrame(normalizeInfiniteLoop);
-      }, { passive: true });
-      window.addEventListener('resize', centerCarousel);
-
-      carousel.addEventListener('click', (event) => {
-        if (!moved) return;
-        event.preventDefault();
-        event.stopPropagation();
-      }, true);
-
-      previousButton?.addEventListener('click', () => scrollByKit(-1));
-      nextButton?.addEventListener('click', () => scrollByKit(1));
-      window.requestAnimationFrame(centerCarousel);
+      previousButton?.addEventListener('click', () => nudgeBand(1));
+      nextButton?.addEventListener('click', () => nudgeBand(-1));
     })();
   </script>
 </body>
