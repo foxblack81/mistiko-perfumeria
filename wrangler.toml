@@ -1,0 +1,6 @@
+name = "mistiko-perfumeria"
+pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "MISTIKO_PRICE_PDFS"
+id = "6b9bfd02ff444549a5dc9c56f88bff61"
