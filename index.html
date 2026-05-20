@@ -606,6 +606,9 @@
     .kit-carousel:active,
     .kit-carousel.is-dragging {
       cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+      user-select: none;
     }
 
     .kit-carousel::-webkit-scrollbar {
@@ -626,6 +629,7 @@
       width: max-content;
       gap: 18px;
       padding: 22px;
+      touch-action: pan-y;
     }
 
     .kit-slide {
@@ -1457,34 +1461,83 @@
 
       let active = false;
       let startX = 0;
+      let startY = 0;
       let startScroll = 0;
       let moved = false;
+      let horizontalDrag = false;
 
-      const stopDrag = () => {
+      const snapToNearestKit = () => {
+        const slide = carousel.querySelector('.kit-slide');
+        if (!slide) return;
+        const style = getComputedStyle(carousel.querySelector('.kit-track'));
+        const gap = Number.parseFloat(style.columnGap || style.gap) || 18;
+        const step = slide.getBoundingClientRect().width + gap;
+        const target = Math.round(carousel.scrollLeft / step) * step;
+        carousel.scrollTo({ left: target, behavior: 'smooth' });
+      };
+
+      const stopDrag = (shouldSnap = true) => {
+        if (!active) return;
         active = false;
+        horizontalDrag = false;
         carousel.classList.remove('is-dragging');
+        if (shouldSnap && moved) snapToNearestKit();
+      };
+
+      const startDrag = (clientX, clientY) => {
+        active = true;
+        moved = false;
+        horizontalDrag = false;
+        startX = clientX;
+        startY = clientY;
+        startScroll = carousel.scrollLeft;
+        carousel.classList.add('is-dragging');
+      };
+
+      const moveDrag = (clientX, clientY, event) => {
+        if (!active) return;
+        const distanceX = clientX - startX;
+        const distanceY = clientY - startY;
+
+        if (!horizontalDrag && Math.abs(distanceX) > 8 && Math.abs(distanceX) > Math.abs(distanceY)) {
+          horizontalDrag = true;
+        }
+
+        if (!horizontalDrag) return;
+        moved = true;
+        if (event && event.cancelable) event.preventDefault();
+        carousel.scrollLeft = startScroll - distanceX;
       };
 
       carousel.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'touch') return;
         if (event.pointerType === 'mouse' && event.button !== 0) return;
-        active = true;
-        moved = false;
-        startX = event.clientX;
-        startScroll = carousel.scrollLeft;
-        carousel.classList.add('is-dragging');
+        startDrag(event.clientX, event.clientY);
         carousel.setPointerCapture(event.pointerId);
       });
 
       carousel.addEventListener('pointermove', (event) => {
-        if (!active) return;
-        const distance = event.clientX - startX;
-        if (Math.abs(distance) > 5) moved = true;
-        carousel.scrollLeft = startScroll - distance;
+        moveDrag(event.clientX, event.clientY, event);
       });
 
-      carousel.addEventListener('pointerup', stopDrag);
-      carousel.addEventListener('pointercancel', stopDrag);
-      carousel.addEventListener('lostpointercapture', stopDrag);
+      carousel.addEventListener('pointerup', () => stopDrag());
+      carousel.addEventListener('pointercancel', () => stopDrag(false));
+      carousel.addEventListener('lostpointercapture', () => stopDrag(false));
+
+      carousel.addEventListener('touchstart', (event) => {
+        const touch = event.touches[0];
+        if (!touch) return;
+        startDrag(touch.clientX, touch.clientY);
+      }, { passive: true });
+
+      carousel.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0];
+        if (!touch) return;
+        moveDrag(touch.clientX, touch.clientY, event);
+      }, { passive: false });
+
+      carousel.addEventListener('touchend', () => stopDrag(), { passive: true });
+      carousel.addEventListener('touchcancel', () => stopDrag(false), { passive: true });
 
       carousel.addEventListener('click', (event) => {
         if (!moved) return;
