@@ -594,7 +594,7 @@
       box-shadow: var(--shadow);
       overflow-x: auto;
       overflow-y: hidden;
-      scroll-snap-type: x mandatory;
+      scroll-snap-type: x proximity;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-y;
@@ -684,7 +684,8 @@
     .kit-slide {
       width: min(78vw, 330px);
       flex: 0 0 auto;
-      scroll-snap-align: start;
+      scroll-snap-align: center;
+      scroll-snap-stop: normal;
       border: 1px solid var(--line);
       background: #fff;
       box-shadow: 0 16px 36px rgba(0, 0, 0, .1);
@@ -1533,31 +1534,20 @@
       let moved = false;
       let horizontalDrag = false;
 
-      const snapToNearestKit = () => {
-        const slide = carousel.querySelector('.kit-slide');
-        if (!slide) return;
-        const style = getComputedStyle(carousel.querySelector('.kit-track'));
-        const gap = Number.parseFloat(style.columnGap || style.gap) || 18;
-        const step = slide.getBoundingClientRect().width + gap;
-        const target = Math.round(carousel.scrollLeft / step) * step;
-        carousel.scrollTo({ left: target, behavior: 'smooth' });
-      };
-
       const scrollByKit = (direction) => {
         const slide = carousel.querySelector('.kit-slide');
         if (!slide) return;
         const style = getComputedStyle(carousel.querySelector('.kit-track'));
         const gap = Number.parseFloat(style.columnGap || style.gap) || 18;
         const step = slide.getBoundingClientRect().width + gap;
-        carousel.scrollBy({ left: direction * step, behavior: 'smooth' });
+        carousel.scrollBy({ left: direction * step * .92, behavior: 'smooth' });
       };
 
-      const stopDrag = (shouldSnap = true) => {
+      const stopDrag = () => {
         if (!active) return;
         active = false;
         horizontalDrag = false;
         carousel.classList.remove('is-dragging');
-        if (shouldSnap && moved) snapToNearestKit();
       };
 
       const startDrag = (clientX, clientY) => {
@@ -1582,7 +1572,7 @@
         if (!horizontalDrag) return;
         moved = true;
         if (event && event.cancelable) event.preventDefault();
-        carousel.scrollLeft = startScroll - distanceX;
+        carousel.scrollLeft = startScroll - (distanceX * .82);
       };
 
       carousel.addEventListener('pointerdown', (event) => {
@@ -1597,8 +1587,8 @@
       });
 
       carousel.addEventListener('pointerup', () => stopDrag());
-      carousel.addEventListener('pointercancel', () => stopDrag(false));
-      carousel.addEventListener('lostpointercapture', () => stopDrag(false));
+      carousel.addEventListener('pointercancel', () => stopDrag());
+      carousel.addEventListener('lostpointercapture', () => stopDrag());
 
       carousel.addEventListener('touchstart', (event) => {
         const touch = event.touches[0];
@@ -1613,7 +1603,7 @@
       }, { passive: false });
 
       carousel.addEventListener('touchend', () => stopDrag(), { passive: true });
-      carousel.addEventListener('touchcancel', () => stopDrag(false), { passive: true });
+      carousel.addEventListener('touchcancel', () => stopDrag(), { passive: true });
 
       carousel.addEventListener('click', (event) => {
         if (!moved) return;
