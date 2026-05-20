@@ -1,1 +1,3 @@
 https://perfumeriamistiko.com/* https://www.perfumeriamistiko.com/:splat 301
+/precios /catalogo 301
+/precios/* /catalogo/:splat 301

@@ -162,7 +162,7 @@
         <h1>Admin Mistiko</h1>
         <p>Publica y administra los PDFs de precios.</p>
       </div>
-      <a class="button" href="/precios">Ver precios publicados</a>
+      <a class="button" href="/catalogo">Ver catalogo publicado</a>
     </div>
 
     <section class="grid">
@@ -180,15 +180,15 @@
 
       <form class="panel hidden" id="uploadForm">
         <h2>Subir PDF</h2>
-        <p>El archivo quedará disponible públicamente en la página de precios.</p>
-        <label>Título
+        <p>El archivo quedara disponible publicamente en la pagina de catalogo.</p>
+        <label>Titulo
           <input id="title" placeholder="Lista de precios mayo 2026" required>
         </label>
         <label>Archivo PDF
           <input id="pdf" type="file" accept="application/pdf,.pdf" required>
         </label>
         <button type="submit">Publicar PDF</button>
-        <button class="secondary" id="logout" type="button">Cerrar sesión</button>
+        <button class="secondary" id="logout" type="button">Cerrar sesion</button>
         <p class="status" id="status"></p>
       </form>
     </section>
@@ -224,7 +224,7 @@
       listBox.innerHTML = "";
 
       if (!data.items.length) {
-        listBox.innerHTML = "<p>No hay PDFs publicados todavía.</p>";
+        listBox.innerHTML = "<p>No hay PDFs publicados todavia.</p>";
         return;
       }
 
@@ -249,7 +249,7 @@
       const pass = document.querySelector("#pass").value;
       sessionStorage.setItem(authKey, `Basic ${btoa(`${user}:${pass}`)}`);
       setLoggedIn(true);
-      statusBox.textContent = "Sesión iniciada.";
+      statusBox.textContent = "Sesion iniciada.";
     });
 
     uploadForm.addEventListener("submit", async (event) => {
@@ -273,14 +273,14 @@
       }
 
       uploadForm.reset();
-      statusBox.textContent = "PDF publicado correctamente.";
+      statusBox.textContent = "PDF publicado correctamente. Ya puedes verlo en /catalogo.";
       await loadPdfs();
     });
 
     listBox.addEventListener("click", async (event) => {
       const button = event.target.closest("[data-delete]");
       if (!button) return;
-      if (!confirm("¿Eliminar este PDF de precios?")) return;
+      if (!confirm("Eliminar este PDF de precios?")) return;
 
       const response = await fetch(`/api/admin/pdfs/${button.dataset.delete}`, {
         method: "DELETE",
