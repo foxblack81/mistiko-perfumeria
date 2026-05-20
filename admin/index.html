@@ -455,6 +455,12 @@
       return date.toLocaleString("es-CO", { dateStyle: "short", timeStyle: "short" });
     };
 
+    const countryFlag = (country) => {
+      const code = String(country || "").trim().toUpperCase();
+      if (!/^[A-Z]{2}$/.test(code)) return "";
+      return String.fromCodePoint(...code.split("").map((letter) => 127397 + letter.charCodeAt(0)));
+    };
+
     async function loadVisits() {
       visitStatus.textContent = "Cargando visitas...";
       const response = await fetch("/api/visits", {
@@ -474,11 +480,13 @@
 
       (data.items || []).forEach((visit) => {
         const row = document.createElement("tr");
+        const flag = countryFlag(visit.country);
+        const location = [visit.city, visit.region, visit.country].filter(Boolean).join(", ");
         row.innerHTML = `
           <td>${escapeHtml(formatDate(visit.visitedAt))}</td>
           <td>${escapeHtml(visit.ip)}</td>
           <td>${escapeHtml(visit.path)}</td>
-          <td>${escapeHtml([visit.city, visit.region, visit.country].filter(Boolean).join(", "))}</td>
+          <td>${escapeHtml(flag ? `${flag} ${location}` : location)}</td>
           <td>${escapeHtml(visit.userAgent)}</td>
         `;
         visitList.appendChild(row);
