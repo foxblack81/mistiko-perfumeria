@@ -14,8 +14,8 @@
       --paper: #ffffff;
       --silver: #c7ccd1;
       --silver-dark: #7d8389;
-      --red: #9d0012;
-      --red-2: #c9142a;
+      --red: #555d64;
+      --red-2: #aeb6bd;
       --ink: #171717;
       --muted: #696969;
       --line: rgba(125, 131, 137, .34);
@@ -168,23 +168,26 @@
       justify-content: center;
       min-height: 48px;
       padding: 0 22px;
-      border: 1px solid rgba(157, 0, 18, .22);
+      border: 1px solid rgba(125, 131, 137, .32);
       border-radius: 6px;
       color: #fff;
       background: linear-gradient(135deg, var(--red), var(--red-2));
-      box-shadow: 0 18px 40px rgba(157, 0, 18, .18);
+      box-shadow: 0 18px 40px rgba(85, 93, 100, .2);
       font-size: .78rem;
       font-weight: 900;
       letter-spacing: .1em;
       text-transform: uppercase;
       transition: transform .2s ease, box-shadow .2s ease;
-      white-space: nowrap;
+      max-width: 100%;
+      white-space: normal;
+      text-align: center;
+      overflow-wrap: anywhere;
       cursor: pointer;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 20px 52px rgba(157, 0, 18, .24);
+      box-shadow: 0 20px 52px rgba(85, 93, 100, .26);
     }
 
     .btn.silver {
@@ -597,7 +600,7 @@
       scroll-snap-type: x proximity;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      touch-action: pan-y;
+      touch-action: pan-x pan-y;
       overscroll-behavior-x: contain;
       cursor: grab;
       scrollbar-width: thin;
@@ -616,7 +619,7 @@
       height: 54px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(157, 0, 18, .22);
+      border: 1px solid rgba(125, 131, 137, .32);
       border-radius: 50%;
       background: rgba(255, 255, 255, .92);
       color: var(--red);
@@ -629,12 +632,12 @@
     .kit-arrow:hover {
       background: var(--red);
       color: #fff;
-      box-shadow: 0 22px 40px rgba(119, 9, 21, .28);
+      box-shadow: 0 22px 40px rgba(85, 93, 100, .28);
       transform: translateY(-50%) scale(1.06);
     }
 
     .kit-arrow:focus-visible {
-      outline: 3px solid rgba(157, 0, 18, .28);
+      outline: 3px solid rgba(125, 131, 137, .32);
       outline-offset: 4px;
     }
 
@@ -678,7 +681,7 @@
       width: max-content;
       gap: 18px;
       padding: 22px;
-      touch-action: pan-y;
+      touch-action: pan-x pan-y;
     }
 
     .kit-slide {
@@ -1056,6 +1059,12 @@
         height: 320px;
       }
 
+      .kit-carousel {
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+        cursor: default;
+      }
+
       .kit-arrow {
         display: none;
       }
@@ -1116,7 +1125,7 @@
             <span class="eyebrow">Modelo de emprendimiento</span>
             <h2>En que consiste este emprendimiento</h2>
           </div>
-          <p class="section-lead">La informacion original se conserva completa y se presenta de forma mas clara, profesional y facil de leer.</p>
+          <p class="section-lead">Toda la informacion clave queda organizada para que el cliente entienda la oportunidad, los productos y la forma de iniciar.</p>
         </div>
         <div class="two-col">
           <div class="photo-panel" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg')" role="img" aria-label="Kit de perfumeria artesanal Mistiko"></div>
@@ -1133,12 +1142,12 @@
       <div class="shell">
         <div class="section-heading">
           <div>
-            <span class="eyebrow">Galeria original</span>
+            <span class="eyebrow">Galeria Mistiko</span>
             <h2>Todo lo que necesitas para empezar tu negocio de perfumeria artesanal</h2>
           </div>
-          <p class="section-lead">Las imagenes se mantienen en el mismo bloque visual del sitio original, con una distribucion mas elegante para escritorio y movil.</p>
+          <p class="section-lead">Cada imagen acompana la explicacion del modelo de negocio, los kits y los beneficios para emprender con Mistiko.</p>
         </div>
-        <div class="gallery" aria-label="Imagenes originales de kits Mistiko con explicacion">
+        <div class="gallery" aria-label="Imagenes de kits Mistiko con explicacion">
           <figure class="photo-story featured">
             <img src="https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg" alt="Kit de perfumeria artesanal Mistiko">
             <figcaption>
@@ -1366,7 +1375,7 @@
             <span class="eyebrow">Esencias disponibles</span>
             <h2>Explora nuestra variedad de esencias para perfumes</h2>
           </div>
-          <p class="section-lead">El sitio original dirige a la coleccion de esencias disponibles. Se conserva el enlace para que el cliente pueda explorar la variedad.</p>
+          <p class="section-lead">Explora referencias disponibles y valida directamente la disponibilidad de esencias para tus pedidos.</p>
         </div>
         <div class="panel text-panel">
           <p>Conoce nuestra variedad de esencias para perfumes y valida la disponibilidad directamente con Perfumeria Mistiko.</p>
@@ -1380,7 +1389,7 @@
         <div class="panel text-panel">
           <span class="eyebrow">Video promocional</span>
           <h2>Presentacion visual del emprendimiento</h2>
-          <p>Esta seccion mantiene la portada visual del video promocional de la pagina original para reforzar la experiencia de marca y la presentacion de los kits.</p>
+          <p>Una presentacion visual para mostrar el emprendimiento, los kits y la experiencia de marca de Perfumeria Mistiko.</p>
         </div>
         <div class="video-block" style="margin-top: 24px;">
           <div class="video-cover" role="img" aria-label="Portada de video de Perfumeria Mistiko"></div>
@@ -1652,20 +1661,6 @@
       carousel.addEventListener('pointercancel', () => stopDrag());
       carousel.addEventListener('lostpointercapture', () => stopDrag());
 
-      carousel.addEventListener('touchstart', (event) => {
-        const touch = event.touches[0];
-        if (!touch) return;
-        startDrag(touch.clientX, touch.clientY);
-      }, { passive: true });
-
-      carousel.addEventListener('touchmove', (event) => {
-        const touch = event.touches[0];
-        if (!touch) return;
-        moveDrag(touch.clientX, touch.clientY, event);
-      }, { passive: false });
-
-      carousel.addEventListener('touchend', () => stopDrag(), { passive: true });
-      carousel.addEventListener('touchcancel', () => stopDrag(), { passive: true });
       carousel.addEventListener('scroll', () => {
         window.requestAnimationFrame(normalizeInfiniteLoop);
       }, { passive: true });
