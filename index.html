@@ -415,6 +415,23 @@
       filter: grayscale(.18);
     }
 
+    .original-order-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .original-order-title h2 {
+      color: var(--red);
+      font-size: clamp(2.1rem, 4.8vw, 4.35rem);
+    }
+
+    .original-order-title p {
+      max-width: 720px;
+      margin: 14px auto 0;
+      color: rgba(23, 23, 23, .76);
+      font-size: 1.02rem;
+    }
+
     .kit-carousel {
       margin-top: 26px;
       border: 1px solid var(--line);
@@ -476,6 +493,26 @@
       color: var(--red);
       font-family: "Cinzel", Georgia, serif;
       font-size: clamp(1.35rem, 3vw, 2.35rem);
+      line-height: 1.25;
+    }
+
+    .quality-band,
+    .shipping-band {
+      text-align: center;
+      padding: 34px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(199, 204, 209, .42), transparent 28%),
+        linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(238, 238, 236, .8));
+      box-shadow: var(--shadow);
+    }
+
+    .quality-band strong,
+    .shipping-band strong {
+      display: block;
+      color: var(--red);
+      font-family: "Cinzel", Georgia, serif;
+      font-size: clamp(1.45rem, 3vw, 2.5rem);
       line-height: 1.25;
     }
 
@@ -605,6 +642,22 @@
       width: 46px;
       height: 46px;
       object-fit: contain;
+    }
+
+    .map-frame {
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .1);
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      min-height: 360px;
+      border: 0;
+      display: block;
+      filter: grayscale(.18);
     }
 
     .footer {
@@ -863,13 +916,10 @@
 
     <section class="section" id="kits">
       <div class="shell">
-        <div class="video-block">
-          <div class="video-cover" role="img" aria-label="Portada de video de kits Mistiko"></div>
-          <div>
-            <span class="eyebrow">Nuestros kits</span>
-            <h2>Desliza para ver nuestros kits de perfumeria</h2>
-            <blockquote class="quote">Perfumes elaborados con alta concentracion de esencia, mas del 50%, e incluyen feromonas.</blockquote>
-          </div>
+        <div class="original-order-title">
+          <span class="eyebrow">Nuestros kits</span>
+          <h2>Nuestros Kits</h2>
+          <p>Desliza para ver nuestros kits de perfumeria.</p>
         </div>
         <div class="kit-carousel" aria-label="Carrusel automatico de kits de perfumeria Mistiko">
           <div class="kit-track">
@@ -934,6 +984,14 @@
       </div>
     </section>
 
+    <section class="section" id="calidad">
+      <div class="shell">
+        <div class="quality-band">
+          <strong>"Perfumes elaborados con alta concentracion de esencia, mas del 50%, e incluyen feromonas."</strong>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="shell">
         <div class="section-heading">
@@ -946,6 +1004,22 @@
         <div class="panel text-panel">
           <p>Conoce nuestra variedad de esencias para perfumes y valida la disponibilidad directamente con Perfumeria Mistiko.</p>
           <a class="btn" href="https://perfumeriamistiko.github.io">Explora aqui nuestra variedad de esencias</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="panel text-panel">
+          <span class="eyebrow">Video promocional</span>
+          <h2>Presentacion visual del emprendimiento</h2>
+          <p>Esta seccion mantiene la portada visual del video promocional de la pagina original para reforzar la experiencia de marca y la presentacion de los kits.</p>
+        </div>
+        <div class="video-block" style="margin-top: 24px;">
+          <div class="video-cover" role="img" aria-label="Portada de video de Perfumeria Mistiko"></div>
+          <div>
+            <blockquote class="quote">Un modelo practico para iniciar un negocio real en la venta de perfumes.</blockquote>
+          </div>
         </div>
       </div>
     </section>
@@ -1023,6 +1097,14 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="shell">
+        <div class="shipping-band">
+          <strong>Tenemos envios a contraentrega a todo Colombia.</strong>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="contacto">
       <div class="shell contact-grid">
         <div class="panel text-panel">
@@ -1039,6 +1121,9 @@
           <div class="whatsapp-row">
             <a class="btn" href="https://wa.me/573224929886">322 492 9886</a>
             <a class="btn silver" href="https://wa.me/573163309586">316 330 9586</a>
+          </div>
+          <div class="map-frame">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2287.2261487480514!2d-76.29289180018031!3d3.5198087064591843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3a05002025cc67%3A0x26f5209eeed59db9!2sPerfumer%C3%ADa%20Mistiko!5e0!3m2!1ses!2sco!4v1770927684102!5m2!1ses!2sco" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Perfumeria Mistiko en Palmira"></iframe>
           </div>
         </div>
         <div class="panel text-panel">
@@ -1058,6 +1143,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
