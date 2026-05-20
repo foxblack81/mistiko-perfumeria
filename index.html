@@ -588,6 +588,7 @@
 
     .kit-carousel {
       margin-top: 26px;
+      position: relative;
       border: 1px solid var(--line);
       background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(238, 238, 236, .78));
       box-shadow: var(--shadow);
@@ -601,6 +602,54 @@
       cursor: grab;
       scrollbar-width: thin;
       scrollbar-color: var(--red) rgba(125, 131, 137, .18);
+    }
+
+    .kit-carousel-wrap {
+      position: relative;
+    }
+
+    .kit-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 4;
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(157, 0, 18, .22);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .92);
+      color: var(--red);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, .16);
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+
+    .kit-arrow:hover {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 22px 40px rgba(119, 9, 21, .28);
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .kit-arrow:focus-visible {
+      outline: 3px solid rgba(157, 0, 18, .28);
+      outline-offset: 4px;
+    }
+
+    .kit-arrow svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2.4;
+    }
+
+    .kit-arrow.prev {
+      left: -26px;
+    }
+
+    .kit-arrow.next {
+      right: -26px;
     }
 
     .kit-carousel:active,
@@ -1006,6 +1055,10 @@
         height: 320px;
       }
 
+      .kit-arrow {
+        display: none;
+      }
+
       .section {
         padding: 72px 0;
       }
@@ -1157,8 +1210,14 @@
           <h2>Nuestros Kits</h2>
           <p>Desliza para ver nuestros kits de perfumeria.</p>
         </div>
-        <div class="kit-carousel" aria-label="Carrusel deslizable de kits de perfumeria Mistiko">
-          <div class="kit-track">
+        <div class="kit-carousel-wrap">
+          <button class="kit-arrow prev" type="button" aria-label="Ver kit anterior">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+          <div class="kit-carousel" aria-label="Carrusel deslizable de kits de perfumeria Mistiko">
+            <div class="kit-track">
             <figure class="kit-slide">
               <img src="https://emprendeconperfumeria.com/images/Productos/producto1.jpeg" alt="Kit Singler 1oz">
               <figcaption>
@@ -1280,7 +1339,13 @@
                 <p class="kit-note">La gramera tiene un valor adicional de $30.000.</p>
               </figcaption>
             </figure>
+            </div>
           </div>
+          <button class="kit-arrow next" type="button" aria-label="Ver kit siguiente">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
@@ -1459,6 +1524,8 @@
       const carousel = document.querySelector('.kit-carousel');
       if (!carousel) return;
 
+      const previousButton = document.querySelector('.kit-arrow.prev');
+      const nextButton = document.querySelector('.kit-arrow.next');
       let active = false;
       let startX = 0;
       let startY = 0;
@@ -1474,6 +1541,15 @@
         const step = slide.getBoundingClientRect().width + gap;
         const target = Math.round(carousel.scrollLeft / step) * step;
         carousel.scrollTo({ left: target, behavior: 'smooth' });
+      };
+
+      const scrollByKit = (direction) => {
+        const slide = carousel.querySelector('.kit-slide');
+        if (!slide) return;
+        const style = getComputedStyle(carousel.querySelector('.kit-track'));
+        const gap = Number.parseFloat(style.columnGap || style.gap) || 18;
+        const step = slide.getBoundingClientRect().width + gap;
+        carousel.scrollBy({ left: direction * step, behavior: 'smooth' });
       };
 
       const stopDrag = (shouldSnap = true) => {
@@ -1544,6 +1620,9 @@
         event.preventDefault();
         event.stopPropagation();
       }, true);
+
+      previousButton?.addEventListener('click', () => scrollByKit(-1));
+      nextButton?.addEventListener('click', () => scrollByKit(1));
     })();
   </script>
 </body>
