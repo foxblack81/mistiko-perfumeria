@@ -13,11 +13,12 @@ export async function onRequestGet({ env }) {
     .map((item) => {
       const id = item.name.replace("pdf:", "");
       const isCatalog = id.startsWith("catalogomistiko");
+      const isInsumosCatalog = id.startsWith("catalogoinsumosmistiko");
       return {
         id,
-        title: item.metadata?.title || (isCatalog ? "Catalogo Mistiko" : "PDF de precios"),
-        filename: item.metadata?.filename || (isCatalog ? "catalogomistiko.pdf" : "precios-mistiko.pdf"),
-        size: item.metadata?.size || (isCatalog ? 1016790 : 0),
+        title: item.metadata?.title || (isInsumosCatalog ? "Catalogo Insumos Mistiko" : isCatalog ? "Catalogo Mistiko" : "PDF de precios"),
+        filename: item.metadata?.filename || (isInsumosCatalog ? "CatalogoInsumosMistiko.pdf" : isCatalog ? "catalogomistiko.pdf" : "precios-mistiko.pdf"),
+        size: item.metadata?.size || (isInsumosCatalog ? 2362688 : isCatalog ? 1016790 : 0),
         uploadedAt: item.metadata?.uploadedAt || "",
         url: `/api/pdfs/${id}`
       };
