@@ -1525,6 +1525,9 @@
       const carousel = document.querySelector('.kit-carousel');
       if (!carousel) return;
 
+      const track = carousel.querySelector('.kit-track');
+      if (!track) return;
+      const originalSlides = track ? Array.from(track.querySelectorAll('.kit-slide')) : [];
       const previousButton = document.querySelector('.kit-arrow.prev');
       const nextButton = document.querySelector('.kit-arrow.next');
       let active = false;
@@ -1533,14 +1536,73 @@
       let startScroll = 0;
       let moved = false;
       let horizontalDrag = false;
+      let loopWidth = 0;
+      let isLoopResetting = false;
+
+      const cloneSlide = (slide) => {
+        const clone = slide.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.tabIndex = -1;
+        return clone;
+      };
+
+      if (track && originalSlides.length) {
+        originalSlides.slice().reverse().forEach((slide) => {
+          track.insertBefore(cloneSlide(slide), track.firstChild);
+        });
+        originalSlides.forEach((slide) => {
+          track.appendChild(cloneSlide(slide));
+        });
+      }
+
+      const getStep = () => {
+        const slide = originalSlides[0] || carousel.querySelector('.kit-slide');
+        if (!slide) return;
+        const style = getComputedStyle(track);
+        const gap = Number.parseFloat(style.columnGap || style.gap) || 18;
+        return slide.getBoundingClientRect().width + gap;
+      };
+
+      const updateLoopWidth = () => {
+        const step = getStep();
+        loopWidth = step ? step * originalSlides.length : 0;
+        return loopWidth;
+      };
+
+      const centerCarousel = () => {
+        updateLoopWidth();
+        if (!loopWidth) return;
+        carousel.scrollLeft = loopWidth;
+      };
+
+      const normalizeInfiniteLoop = () => {
+        if (!loopWidth || isLoopResetting) return;
+        const step = getStep() || 1;
+        let nextPosition = null;
+
+        if (carousel.scrollLeft <= step) {
+          nextPosition = carousel.scrollLeft + loopWidth;
+        }
+
+        if (carousel.scrollLeft >= (loopWidth * 2) + step) {
+          nextPosition = carousel.scrollLeft - loopWidth;
+        }
+
+        if (nextPosition === null) return;
+        isLoopResetting = true;
+        carousel.style.scrollBehavior = 'auto';
+        carousel.scrollLeft = nextPosition;
+        requestAnimationFrame(() => {
+          carousel.style.scrollBehavior = '';
+          isLoopResetting = false;
+        });
+      };
 
       const scrollByKit = (direction) => {
-        const slide = carousel.querySelector('.kit-slide');
-        if (!slide) return;
-        const style = getComputedStyle(carousel.querySelector('.kit-track'));
-        const gap = Number.parseFloat(style.columnGap || style.gap) || 18;
-        const step = slide.getBoundingClientRect().width + gap;
-        carousel.scrollBy({ left: direction * step * .92, behavior: 'smooth' });
+        const step = getStep();
+        if (!step) return;
+        updateLoopWidth();
+        carousel.scrollBy({ left: direction * step, behavior: 'smooth' });
       };
 
       const stopDrag = () => {
@@ -1604,6 +1666,10 @@
 
       carousel.addEventListener('touchend', () => stopDrag(), { passive: true });
       carousel.addEventListener('touchcancel', () => stopDrag(), { passive: true });
+      carousel.addEventListener('scroll', () => {
+        window.requestAnimationFrame(normalizeInfiniteLoop);
+      }, { passive: true });
+      window.addEventListener('resize', centerCarousel);
 
       carousel.addEventListener('click', (event) => {
         if (!moved) return;
@@ -1613,6 +1679,7 @@
 
       previousButton?.addEventListener('click', () => scrollByKit(-1));
       nextButton?.addEventListener('click', () => scrollByKit(1));
+      window.requestAnimationFrame(centerCarousel);
     })();
   </script>
 </body>
