@@ -3,25 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mistiko Perfumeria Premium</title>
-  <meta name="description" content="Perfumeria Mistiko en Cali, Colombia: perfumes premium, kits para emprender, entregas a domicilio y pedidos por WhatsApp.">
+  <title>Perfumeria Mistiko | Emprende con perfumeria artesanal</title>
+  <meta name="description" content="Perfumeria Mistiko: kits de perfumeria artesanal, insumos, esencias premium y modelo de emprendimiento en Palmira, Valle del Cauca.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #f7f7f5;
-      --black-2: #ececea;
-      --gold: #bfc3c7;
-      --gold-soft: #a40012;
-      --burgundy: #97000f;
-      --burgundy-2: #cf1226;
-      --smoke: #171717;
-      --muted: #666666;
-      --line: rgba(148, 154, 160, .42);
-      --glass: rgba(255, 255, 255, .74);
-      --shadow: 0 24px 70px rgba(50, 50, 50, .16);
-      --gold-gradient: linear-gradient(135deg, #8d9298 0%, #ffffff 28%, #c4c8cc 52%, #f4f4f2 72%, #8d9298 100%);
+      --white: #f8f8f6;
+      --paper: #ffffff;
+      --silver: #c7ccd1;
+      --silver-dark: #7d8389;
+      --red: #9d0012;
+      --red-2: #c9142a;
+      --ink: #171717;
+      --muted: #696969;
+      --line: rgba(125, 131, 137, .34);
+      --shadow: 0 24px 70px rgba(22, 22, 22, .14);
+      --metal: linear-gradient(135deg, #8d9298 0%, #ffffff 28%, #c7ccd1 54%, #f5f5f3 74%, #858b91 100%);
     }
 
     * {
@@ -34,13 +33,13 @@
 
     body {
       margin: 0;
-      color: var(--smoke);
+      color: var(--ink);
       background:
-        radial-gradient(circle at 20% 0%, rgba(212, 175, 55, .13), transparent 34%),
-        radial-gradient(circle at 90% 15%, rgba(107, 0, 0, .34), transparent 28%),
-        var(--black);
+        radial-gradient(circle at 15% 0%, rgba(199, 204, 209, .62), transparent 34%),
+        radial-gradient(circle at 90% 12%, rgba(157, 0, 18, .14), transparent 30%),
+        linear-gradient(180deg, #fff 0%, var(--white) 46%, #ececea 100%);
       font-family: "Montserrat", Arial, sans-serif;
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
@@ -50,10 +49,10 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px);
+        linear-gradient(rgba(125, 131, 137, .14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(125, 131, 137, .1) 1px, transparent 1px);
       background-size: 72px 72px;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), transparent 70%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .42), transparent 78%);
       z-index: -1;
     }
 
@@ -63,8 +62,8 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     .shell {
@@ -72,19 +71,18 @@
       margin: 0 auto;
     }
 
-    .site-header {
-      position: fixed;
+    .header {
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
       z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: rgba(5, 5, 5, .72);
+      background: rgba(255, 255, 255, .86);
       backdrop-filter: blur(18px);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, .07);
     }
 
     .nav {
-      min-height: 82px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -99,132 +97,99 @@
     }
 
     .brand-mark {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(212, 175, 55, .52);
+      border: 1px solid var(--line);
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 20%, rgba(255, 255, 255, .16), transparent 28%), rgba(0, 0, 0, .72);
-      box-shadow: 0 0 28px rgba(212, 175, 55, .18);
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(157, 0, 18, .1);
     }
 
-    .brand svg {
-      width: 28px;
-      height: 31px;
-    }
-
-    .brand img {
-      width: 36px;
-      height: 36px;
+    .brand-mark img {
+      width: 38px;
+      height: 38px;
       object-fit: contain;
     }
 
-    .brand-name {
+    .brand-title {
       font-family: "Cinzel", Georgia, serif;
-      font-size: 1.28rem;
+      color: var(--red);
+      font-size: 1.18rem;
       line-height: 1;
       letter-spacing: .12em;
-      color: var(--gold-soft);
+      text-transform: uppercase;
     }
 
-    .brand-name span {
+    .brand-title span {
       display: block;
       margin-top: 5px;
       color: var(--muted);
       font-family: "Montserrat", Arial, sans-serif;
       font-size: .62rem;
-      font-weight: 700;
-      letter-spacing: .32em;
+      font-weight: 800;
+      letter-spacing: .25em;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
-      color: rgba(245, 245, 245, .84);
-      font-size: .82rem;
-      font-weight: 700;
+      gap: 26px;
+      color: rgba(23, 23, 23, .78);
+      font-size: .8rem;
+      font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
 
     .nav-links a {
-      position: relative;
       padding: 28px 0;
+      border-bottom: 1px solid transparent;
     }
 
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 20px;
-      height: 1px;
-      background: var(--gold-gradient);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform .25s ease;
+    .nav-links a:hover {
+      color: var(--red);
+      border-color: var(--red);
     }
 
-    .nav-links a:hover::after {
-      transform: scaleX(1);
-    }
-
-    .header-cta,
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 48px;
       padding: 0 22px;
+      border: 1px solid rgba(157, 0, 18, .22);
       border-radius: 6px;
-      border: 1px solid rgba(212, 175, 55, .52);
-      font-size: .78rem;
-      font-weight: 800;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
-      white-space: nowrap;
-    }
-
-    .header-cta,
-    .btn.gold {
-      color: #090909;
-      background: var(--gold-gradient);
-      box-shadow: 0 14px 36px rgba(212, 175, 55, .16);
-    }
-
-    .btn.red {
       color: #fff;
-      border-color: rgba(212, 175, 55, .34);
-      background: linear-gradient(135deg, var(--burgundy), var(--burgundy-2));
-      box-shadow: 0 18px 44px rgba(107, 0, 0, .34);
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      box-shadow: 0 18px 40px rgba(157, 0, 18, .18);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: transform .2s ease, box-shadow .2s ease;
+      white-space: nowrap;
+      cursor: pointer;
     }
 
-    .btn.ghost {
-      color: var(--gold-soft);
-      background: rgba(255, 255, 255, .04);
-    }
-
-    .btn:hover,
-    .header-cta:hover {
+    .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 18px 52px rgba(212, 175, 55, .24);
+      box-shadow: 0 20px 52px rgba(157, 0, 18, .24);
     }
 
-    .btn.small {
-      min-height: 42px;
-      padding: 0 16px;
-      font-size: .72rem;
+    .btn.silver {
+      color: var(--red);
+      background: var(--metal);
+      border-color: var(--line);
     }
 
     .hero {
-      min-height: 100svh;
       position: relative;
+      min-height: 88svh;
       display: grid;
       align-items: center;
-      padding: 132px 0 74px;
+      padding: 96px 0 72px;
       overflow: hidden;
       isolation: isolate;
     }
@@ -233,788 +198,397 @@
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -3;
+      z-index: -2;
       background:
-        linear-gradient(90deg, rgba(0, 0, 0, .94) 0%, rgba(0, 0, 0, .72) 46%, rgba(0, 0, 0, .38) 100%),
+        linear-gradient(90deg, rgba(255, 255, 255, .98) 0%, rgba(255, 255, 255, .9) 44%, rgba(255, 255, 255, .42) 100%),
         url("https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg") center / cover;
-      filter: saturate(.86) contrast(1.12);
+      filter: saturate(.25) contrast(1.08);
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(circle at 68% 35%, rgba(212, 175, 55, .24), transparent 28%),
-        linear-gradient(to bottom, transparent 0%, var(--black) 98%);
-    }
-
-    .gold-dust {
-      position: absolute;
-      inset: 0;
       z-index: -1;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(242, 217, 121, .8) 0 1px, transparent 1.7px),
-        radial-gradient(circle, rgba(255, 255, 255, .48) 0 1px, transparent 1.4px);
-      background-size: 130px 130px, 210px 210px;
-      background-position: 20px 60px, 100px 20px;
-      opacity: .26;
-      animation: drift 16s linear infinite;
-    }
-
-    @keyframes drift {
-      from { transform: translate3d(0, 0, 0); }
-      to { transform: translate3d(-90px, 90px, 0); }
+      background:
+        radial-gradient(circle at 64% 36%, rgba(199, 204, 209, .45), transparent 26%),
+        linear-gradient(to bottom, transparent 0%, var(--white) 96%);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 460px);
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
       align-items: center;
-      gap: 64px;
+      gap: 60px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 22px;
-      color: var(--gold-soft);
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: .2em;
+      margin-bottom: 20px;
+      color: var(--red);
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .18em;
       text-transform: uppercase;
     }
 
     .eyebrow::before {
       content: "";
-      width: 48px;
+      width: 46px;
       height: 1px;
-      background: var(--gold-gradient);
+      background: var(--red);
     }
 
     h1,
     h2,
     h3 {
-      font-family: "Cinzel", Georgia, serif;
       margin: 0;
-      line-height: 1.04;
+      font-family: "Cinzel", Georgia, serif;
+      line-height: 1.06;
       letter-spacing: .02em;
     }
 
     h1 {
-      max-width: 820px;
-      font-size: clamp(3.5rem, 8vw, 7.85rem);
-      color: var(--gold-soft);
-      text-shadow: 0 0 36px rgba(212, 175, 55, .18);
+      max-width: 860px;
+      color: var(--red);
+      font-size: clamp(3rem, 7vw, 7rem);
+      text-shadow: 0 12px 34px rgba(157, 0, 18, .12);
     }
 
     .hero-copy {
-      max-width: 680px;
+      max-width: 720px;
       margin: 28px 0 34px;
-      color: rgba(245, 245, 245, .86);
-      font-size: clamp(1rem, 2vw, 1.28rem);
+      color: rgba(23, 23, 23, .82);
+      font-size: clamp(1.05rem, 2vw, 1.24rem);
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 34px;
     }
 
-    .trust-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      max-width: 670px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .logo-card {
+      padding: 34px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .82);
+      box-shadow: var(--shadow);
     }
 
-    .trust-item {
-      padding: 18px 20px;
-      border-right: 1px solid var(--line);
-    }
-
-    .trust-item:last-child {
-      border-right: 0;
-    }
-
-    .trust-item strong {
-      display: block;
-      color: var(--gold-soft);
-      font-family: "Cinzel", Georgia, serif;
-      font-size: 1.42rem;
-      line-height: 1;
-    }
-
-    .trust-item span {
-      display: block;
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: .78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    .perfume-stage {
-      position: relative;
-      min-height: 540px;
-      display: grid;
-      place-items: center;
-    }
-
-    .perfume-stage::before {
-      content: "";
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      border: 1px solid rgba(212, 175, 55, .28);
-      border-radius: 50%;
-      box-shadow: inset 0 0 70px rgba(212, 175, 55, .1), 0 0 80px rgba(107, 0, 0, .18);
-    }
-
-    .bottle {
-      position: relative;
-      width: 230px;
-      height: 360px;
-      border: 1px solid rgba(242, 217, 121, .62);
-      border-radius: 42px 42px 28px 28px;
-      background:
-        linear-gradient(115deg, rgba(255, 255, 255, .12), transparent 28%),
-        radial-gradient(circle at 50% 12%, rgba(242, 217, 121, .22), transparent 22%),
-        linear-gradient(180deg, rgba(25, 25, 25, .88), rgba(4, 4, 4, .96));
-      box-shadow: var(--shadow), inset 0 0 40px rgba(212, 175, 55, .08);
-    }
-
-    .bottle::before {
-      content: "";
-      position: absolute;
-      top: -78px;
-      left: 66px;
-      width: 98px;
-      height: 78px;
-      border: 1px solid rgba(242, 217, 121, .62);
-      border-bottom: 0;
-      border-radius: 18px 18px 0 0;
-      background: linear-gradient(135deg, #191919, #070707);
-      box-shadow: inset 0 0 24px rgba(212, 175, 55, .12);
-    }
-
-    .bottle::after {
-      content: "";
-      position: absolute;
-      top: -110px;
-      left: 52px;
-      width: 126px;
-      height: 35px;
-      border-radius: 10px;
-      border: 1px solid rgba(242, 217, 121, .62);
-      background: var(--gold-gradient);
-      box-shadow: 0 18px 45px rgba(212, 175, 55, .22);
-    }
-
-    .bottle-label {
-      position: absolute;
-      inset: 106px 28px auto;
-      min-height: 135px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      border: 1px solid rgba(212, 175, 55, .45);
-      background: rgba(0, 0, 0, .48);
-    }
-
-    .bottle-label strong {
-      display: block;
-      color: var(--gold-soft);
-      font-family: "Cinzel", Georgia, serif;
-      font-size: 1.45rem;
-      letter-spacing: .13em;
-    }
-
-    .bottle-label span {
-      color: var(--muted);
-      font-size: .64rem;
-      font-weight: 800;
-      letter-spacing: .24em;
-      text-transform: uppercase;
+    .logo-card img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      filter: grayscale(1) contrast(1.08);
     }
 
     .section {
-      position: relative;
-      padding: 112px 0;
+      padding: 94px 0;
     }
 
     .section-heading {
       display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(280px, .6fr);
+      grid-template-columns: minmax(0, .9fr) minmax(280px, .62fr);
       gap: 42px;
       align-items: end;
-      margin-bottom: 48px;
+      margin-bottom: 44px;
     }
 
     .section h2 {
-      font-size: clamp(2.25rem, 5vw, 4.55rem);
-      color: var(--gold-soft);
+      color: var(--red);
+      font-size: clamp(2.1rem, 4.8vw, 4.35rem);
     }
 
     .section-lead {
-      color: rgba(245, 245, 245, .78);
-      font-size: 1.04rem;
       margin: 0;
+      color: rgba(23, 23, 23, .76);
+      font-size: 1.02rem;
     }
 
-    .why-grid {
+    .panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(238, 238, 236, .78));
+      box-shadow: var(--shadow);
+    }
+
+    .text-panel {
+      padding: 42px;
+    }
+
+    .text-panel p {
+      margin: 0 0 20px;
+      color: rgba(23, 23, 23, .78);
+      font-size: 1rem;
+    }
+
+    .text-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .two-col {
       display: grid;
-      grid-template-columns: minmax(280px, .85fr) minmax(0, 1fr);
-      gap: 36px;
+      grid-template-columns: minmax(290px, .75fr) minmax(0, 1fr);
+      gap: 24px;
       align-items: stretch;
     }
 
-    .lux-image {
-      min-height: 520px;
+    .photo-panel {
+      min-height: 500px;
       border: 1px solid var(--line);
       background:
-        linear-gradient(to bottom, rgba(0, 0, 0, .06), rgba(0, 0, 0, .82)),
-        url("https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg") center / cover;
-      box-shadow: var(--shadow);
-    }
-
-    .copy-panel {
-      display: grid;
-      align-content: center;
-      padding: 44px;
-      border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .025));
-      box-shadow: var(--shadow);
-    }
-
-    .copy-panel h3 {
-      color: var(--gold-soft);
-      font-size: clamp(1.85rem, 4vw, 3.45rem);
-      margin-bottom: 22px;
-    }
-
-    .copy-panel p {
-      margin: 0 0 22px;
-      color: rgba(245, 245, 245, .8);
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 14px;
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .feature-list li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      color: rgba(245, 245, 245, .86);
-      font-weight: 600;
-    }
-
-    .feature-list li::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      margin-top: 8px;
-      flex: 0 0 auto;
-      border-radius: 50%;
-      background: var(--gold-gradient);
-      box-shadow: 0 0 18px rgba(212, 175, 55, .55);
-    }
-
-    .kits {
-      background:
-        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, .12), transparent 34%),
-        linear-gradient(180deg, rgba(17, 17, 17, .52), transparent);
-    }
-
-    .kit-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .kit-card {
-      position: relative;
-      min-height: 520px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .22) 34%, rgba(0, 0, 0, .92) 100%),
+        linear-gradient(to bottom, rgba(255, 255, 255, .04), rgba(0, 0, 0, .36)),
         var(--image) center / cover;
       box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+      filter: grayscale(.25);
     }
 
-    .kit-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(212, 175, 55, .16), transparent 32%, rgba(107, 0, 0, .18));
-      opacity: .65;
-    }
-
-    .kit-card > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .kit-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(242, 217, 121, .72);
-      box-shadow: 0 30px 86px rgba(0, 0, 0, .72), 0 0 34px rgba(212, 175, 55, .16);
-    }
-
-    .kit-tag {
-      align-self: flex-start;
-      margin-bottom: auto;
-      padding: 8px 12px;
-      color: #090909;
-      background: var(--gold-gradient);
-      border-radius: 4px;
-      font-size: .7rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .kit-card h3 {
-      margin-top: 180px;
-      color: var(--gold-soft);
-      font-size: 2rem;
-    }
-
-    .kit-card p {
-      margin: 12px 0 18px;
-      color: rgba(245, 245, 245, .82);
-    }
-
-    .kit-card ul {
-      display: grid;
-      gap: 8px;
-      margin: 0 0 24px;
-      padding: 0;
-      list-style: none;
-      color: rgba(245, 245, 245, .9);
-      font-size: .92rem;
-      font-weight: 600;
-    }
-
-    .kit-card li::before {
-      content: "+";
-      margin-right: 9px;
-      color: var(--gold-soft);
-      font-weight: 900;
-    }
-
-    .transformation {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .split-card {
-      min-height: 360px;
-      padding: 36px;
-      display: grid;
-      align-content: end;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(to bottom, rgba(0, 0, 0, .08), rgba(0, 0, 0, .84)),
-        var(--image) center / cover;
-      box-shadow: var(--shadow);
-    }
-
-    .split-card h3 {
-      color: var(--gold-soft);
-      font-size: 2.3rem;
-      margin-bottom: 12px;
-    }
-
-    .split-card p {
-      margin: 0;
-      color: rgba(245, 245, 245, .84);
-      max-width: 460px;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .source-gallery {
+    .gallery {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 10px;
     }
 
-    .source-gallery figure {
-      min-height: 240px;
+    .gallery figure {
+      min-height: 245px;
       margin: 0;
       border: 1px solid var(--line);
       background:
-        linear-gradient(to bottom, rgba(0, 0, 0, .02), rgba(0, 0, 0, .48)),
+        linear-gradient(to bottom, rgba(255, 255, 255, .02), rgba(0, 0, 0, .34)),
         var(--image) center / cover;
-      box-shadow: 0 16px 42px rgba(0, 0, 0, .3);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .12);
+      filter: grayscale(.18);
     }
 
-    .source-gallery figure:nth-child(2),
-    .source-gallery figure:nth-child(5) {
-      transform: translateY(28px);
+    .gallery figure:nth-child(2),
+    .gallery figure:nth-child(5) {
+      transform: translateY(26px);
     }
 
-    .source-gallery figure:nth-child(3),
-    .source-gallery figure:nth-child(6) {
-      transform: translateY(56px);
+    .gallery figure:nth-child(3),
+    .gallery figure:nth-child(6) {
+      transform: translateY(52px);
     }
 
-    .essence-card {
+    .video-block {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
+      grid-template-columns: minmax(280px, .74fr) minmax(0, 1fr);
+      gap: 28px;
       align-items: center;
-      padding: 32px;
+      padding: 30px;
       border: 1px solid var(--line);
-      background:
-        radial-gradient(circle at 88% 15%, rgba(212, 175, 55, .15), transparent 24%),
-        linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .025));
+      background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(238, 238, 236, .78));
       box-shadow: var(--shadow);
     }
 
-    .essence-card h3 {
-      color: var(--gold-soft);
-      font-size: clamp(1.65rem, 4vw, 3rem);
-      margin-bottom: 10px;
-    }
-
-    .essence-card p {
-      margin: 0;
-      color: rgba(245, 245, 245, .78);
-    }
-
-    .product-card {
+    .video-cover {
+      min-height: 380px;
       border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .026));
-      box-shadow: 0 16px 42px rgba(0, 0, 0, .32);
+      background:
+        linear-gradient(to bottom, rgba(255, 255, 255, .02), rgba(0, 0, 0, .34)),
+        url("https://emprendeconperfumeria.com/images/portada-video.png") center / cover;
+      filter: grayscale(.18);
+    }
+
+    .kit-carousel {
+      margin-top: 26px;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(238, 238, 236, .78));
+      box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .product-media {
-      min-height: 220px;
-      background:
-        linear-gradient(to bottom, rgba(0, 0, 0, .03), rgba(0, 0, 0, .78)),
-        var(--image) center / cover;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .product-body {
-      padding: 20px;
-    }
-
-    .product-body h3 {
-      color: var(--gold-soft);
-      font-size: 1.18rem;
-      margin-bottom: 8px;
-    }
-
-    .product-body p {
-      min-height: 54px;
-      margin: 0 0 14px;
-      color: rgba(245, 245, 245, .72);
-      font-size: .88rem;
-    }
-
-    .product-meta {
+    .kit-track {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 16px;
-      color: var(--muted);
-      font-size: .74rem;
-      font-weight: 800;
+      width: max-content;
+      gap: 18px;
+      padding: 22px;
+      animation: kitSlide 34s linear infinite;
+    }
+
+    .kit-carousel:hover .kit-track {
+      animation-play-state: paused;
+    }
+
+    .kit-slide {
+      width: min(78vw, 330px);
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, .1);
+      overflow: hidden;
+    }
+
+    .kit-slide img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      filter: grayscale(.12) contrast(1.03);
+    }
+
+    .kit-slide figcaption {
+      padding: 16px 18px;
+      color: var(--red);
+      font-weight: 900;
       letter-spacing: .08em;
       text-transform: uppercase;
+      font-size: .8rem;
     }
 
-    .city-strip {
+    @keyframes kitSlide {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(calc(-50% - 9px));
+      }
+    }
+
+    .quote {
+      margin: 0;
+      padding-left: 18px;
+      border-left: 3px solid var(--red);
+      color: var(--red);
+      font-family: "Cinzel", Georgia, serif;
+      font-size: clamp(1.35rem, 3vw, 2.35rem);
+      line-height: 1.25;
+    }
+
+    .list-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .list-card {
+      min-height: 142px;
+      padding: 22px;
       border: 1px solid var(--line);
-      background: var(--line);
+      background: rgba(255, 255, 255, .82);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .08);
     }
 
-    .finance-band {
+    .list-card strong {
+      display: block;
+      color: var(--red);
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.2;
+    }
+
+    .bullet-list {
       display: grid;
-      grid-template-columns: minmax(0, .82fr) minmax(280px, .65fr);
+      gap: 12px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: rgba(23, 23, 23, .78);
+      font-weight: 600;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      margin-top: 9px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 18px rgba(157, 0, 18, .28);
+    }
+
+    .statement-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .statement {
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .84);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .08);
+    }
+
+    .statement h3 {
+      margin-bottom: 14px;
+      color: var(--red);
+      font-size: 1.7rem;
+    }
+
+    .motivation {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr);
       gap: 24px;
       align-items: stretch;
     }
 
-    .video-preview {
-      display: grid;
-      grid-template-columns: minmax(280px, .72fr) minmax(0, 1fr);
-      gap: 28px;
-      align-items: center;
-      padding: 32px;
-      border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .025));
-      box-shadow: var(--shadow);
-    }
-
-    .video-frame {
-      min-height: 360px;
-      border: 1px solid rgba(212, 175, 55, .42);
-      background:
-        linear-gradient(to bottom, rgba(0, 0, 0, .04), rgba(0, 0, 0, .7)),
-        url("https://emprendeconperfumeria.com/images/portada-video.png") center / cover;
-      box-shadow: inset 0 0 80px rgba(0, 0, 0, .45);
-    }
-
-    .video-copy h3 {
-      color: var(--gold-soft);
-      font-size: clamp(2rem, 4.4vw, 4rem);
-      margin-bottom: 18px;
-    }
-
-    .video-copy p {
-      margin: 0 0 18px;
-      color: rgba(245, 245, 245, .8);
-    }
-
-    .video-copy blockquote {
-      margin: 0;
-      padding-left: 18px;
-      border-left: 2px solid var(--gold);
-      color: var(--gold-soft);
-      font-family: "Cinzel", Georgia, serif;
-      font-size: 1.25rem;
-    }
-
-    .finance-copy {
-      padding: 42px;
-      border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(107, 0, 0, .18), rgba(255, 255, 255, .035));
-    }
-
-    .finance-copy h3 {
-      color: var(--gold-soft);
-      font-size: clamp(2rem, 4.4vw, 4rem);
-      margin-bottom: 18px;
-    }
-
-    .finance-copy p {
-      margin: 0 0 18px;
-      color: rgba(245, 245, 245, .8);
-    }
-
-    .finance-image {
-      min-height: 420px;
+    .motivation-image {
+      min-height: 460px;
       border: 1px solid var(--line);
       background:
-        linear-gradient(to bottom, rgba(0, 0, 0, .06), rgba(0, 0, 0, .72)),
+        linear-gradient(to bottom, rgba(255, 255, 255, .04), rgba(0, 0, 0, .3)),
         url("https://emprendeconperfumeria.com/images/Motivacion.jpeg") center / cover;
       box-shadow: var(--shadow);
+      filter: grayscale(.16);
     }
 
-    .city-strip div {
-      padding: 26px;
-      background: rgba(255, 255, 255, .045);
-    }
-
-    .city-strip strong {
-      display: block;
-      color: var(--gold-soft);
-      font-family: "Cinzel", Georgia, serif;
-      font-size: 1.22rem;
-      margin-bottom: 8px;
-    }
-
-    .city-strip span {
-      color: rgba(245, 245, 245, .74);
-      font-size: .92rem;
-    }
-
-    .benefit {
-      min-height: 170px;
-      padding: 26px;
-      border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .025));
-    }
-
-    .benefit strong {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--gold-soft);
-      font-family: "Cinzel", Georgia, serif;
-      font-size: 1.35rem;
-    }
-
-    .benefit span {
-      color: rgba(245, 245, 245, .76);
-      font-size: .95rem;
-    }
-
-    .testimonials {
-      background: linear-gradient(180deg, transparent, rgba(107, 0, 0, .12), transparent);
-    }
-
-    .testimonial-grid {
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: minmax(0, .8fr) minmax(280px, .7fr);
+      gap: 24px;
+      align-items: stretch;
     }
 
-    .quote {
-      padding: 30px;
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .contact-item {
+      padding: 18px 20px;
       border: 1px solid var(--line);
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .025)),
-        #0d0d0d;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, .38);
+      background: rgba(255, 255, 255, .86);
+      font-weight: 700;
     }
 
-    .stars {
-      color: var(--gold-soft);
-      letter-spacing: .12em;
-      margin-bottom: 18px;
-    }
-
-    .quote p {
-      margin: 0 0 22px;
-      color: rgba(245, 245, 245, .84);
-      font-size: .98rem;
-    }
-
-    .quote strong {
-      color: var(--smoke);
+    .contact-item span {
+      display: block;
+      color: var(--red);
+      font-family: "Cinzel", Georgia, serif;
       font-size: .9rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
-    .faq-wrap {
-      display: grid;
-      grid-template-columns: minmax(280px, .55fr) minmax(0, 1fr);
-      gap: 42px;
-      align-items: start;
-    }
-
-    .faq-list {
-      display: grid;
+    .whatsapp-row {
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
+      margin-top: 22px;
     }
 
-    details {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .045);
-    }
-
-    summary {
-      cursor: pointer;
-      padding: 22px 24px;
-      color: var(--gold-soft);
-      font-weight: 800;
-      list-style: none;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    details p {
-      margin: 0;
-      padding: 0 24px 24px;
-      color: rgba(245, 245, 245, .76);
-    }
-
-    .final-cta {
-      min-height: 520px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background:
-        linear-gradient(to bottom, rgba(0, 0, 0, .18), rgba(0, 0, 0, .86)),
-        url("https://emprendeconperfumeria.com/images/Motivacion.jpeg") center / cover;
-    }
-
-    .final-cta h2 {
-      max-width: 900px;
-      margin: 0 auto 22px;
-      font-size: clamp(2.5rem, 6vw, 5.7rem);
-      color: var(--gold-soft);
-    }
-
-    .final-cta p {
-      max-width: 650px;
-      margin: 0 auto 30px;
-      color: rgba(245, 245, 245, .82);
-      font-size: 1.08rem;
+    .whatsapp-icon {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
     }
 
     .footer {
-      padding: 58px 0 36px;
-      background: #050505;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: minmax(240px, 1fr) repeat(3, minmax(150px, .45fr));
-      gap: 36px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 36px;
-    }
-
-    .footer h3,
-    .footer h4 {
-      color: var(--gold-soft);
-      font-family: "Cinzel", Georgia, serif;
-      margin: 0 0 14px;
-    }
-
-    .footer p,
-    .footer a {
-      color: rgba(245, 245, 245, .72);
-      font-size: .93rem;
-    }
-
-    .footer a {
-      display: block;
-      margin: 9px 0;
-    }
-
-    .wapp-icon {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      margin-top: 12px;
-    }
-
-    .copyright {
-      padding-top: 24px;
-      color: rgba(245, 245, 245, .5);
-      font-size: .82rem;
+      padding: 42px 0;
+      border-top: 1px solid var(--line);
+      background: #f2f2f0;
+      color: rgba(23, 23, 23, .66);
+      font-size: .9rem;
     }
 
     .mobile-cta {
@@ -1026,9 +600,9 @@
       z-index: 30;
       min-height: 54px;
       border-radius: 7px;
-      color: #090909;
-      background: var(--gold-gradient);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, .55);
+      color: #fff;
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      box-shadow: 0 14px 40px rgba(0, 0, 0, .22);
       align-items: center;
       justify-content: center;
       font-weight: 900;
@@ -1036,349 +610,39 @@
       text-transform: uppercase;
     }
 
-    .cart-panel {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 35;
-      width: min(390px, calc(100% - 28px));
-      border: 1px solid rgba(212, 175, 55, .52);
-      background: rgba(5, 5, 5, .92);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .62);
-      transform: translateY(calc(100% + 30px));
-      transition: transform .28s ease;
-    }
-
-    .cart-panel.open {
-      transform: translateY(0);
-    }
-
-    .cart-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 18px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .cart-head strong {
-      color: var(--gold-soft);
-      font-family: "Cinzel", Georgia, serif;
-      letter-spacing: .08em;
-    }
-
-    .cart-close {
-      width: 34px;
-      height: 34px;
-      border: 1px solid var(--line);
-      color: var(--gold-soft);
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .cart-items {
-      max-height: 250px;
-      overflow: auto;
-      padding: 8px 18px;
-    }
-
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(212, 175, 55, .16);
-      color: rgba(245, 245, 245, .84);
-      font-size: .88rem;
-    }
-
-    .cart-item button {
-      border: 0;
-      color: var(--gold-soft);
-      background: transparent;
-      cursor: pointer;
-      font-weight: 900;
-    }
-
-    .cart-empty {
-      color: rgba(245, 245, 245, .58);
-      padding: 18px 0;
-      font-size: .9rem;
-    }
-
-    .cart-actions {
-      display: grid;
-      gap: 10px;
-      padding: 18px;
-    }
-
-    .cart-note {
-      margin: 0;
-      color: rgba(245, 245, 245, .56);
-      font-size: .78rem;
-      text-align: center;
-    }
-
-    .floating-cart {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 34;
-      width: 62px;
-      height: 62px;
-      border: 1px solid rgba(212, 175, 55, .52);
-      border-radius: 50%;
-      color: #090909;
-      background: var(--gold-gradient);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, .56);
-      cursor: pointer;
-      font-weight: 900;
-    }
-
-    /* White, silver and red premium theme overrides */
-    body {
-      background:
-        radial-gradient(circle at 16% 0%, rgba(191, 195, 199, .55), transparent 34%),
-        radial-gradient(circle at 90% 14%, rgba(164, 0, 18, .16), transparent 30%),
-        linear-gradient(180deg, #ffffff 0%, #f7f7f5 42%, #ececea 100%);
-    }
-
-    body::before {
-      background-image:
-        linear-gradient(rgba(148, 154, 160, .16) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 154, 160, .12) 1px, transparent 1px);
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .42), transparent 78%);
-    }
-
-    .site-header {
-      background: rgba(255, 255, 255, .82);
-      box-shadow: 0 14px 42px rgba(0, 0, 0, .08);
-    }
-
-    .brand-mark {
-      background: radial-gradient(circle at 35% 20%, rgba(255, 255, 255, .9), transparent 28%), rgba(247, 247, 245, .96);
-      box-shadow: 0 0 28px rgba(164, 0, 18, .12);
-    }
-
-    .brand-name,
-    .eyebrow,
-    .section h2,
-    .copy-panel h3,
-    .kit-card h3,
-    .split-card h3,
-    .essence-card h3,
-    .product-body h3,
-    .video-copy h3,
-    .finance-copy h3,
-    .city-strip strong,
-    .benefit strong,
-    summary,
-    .footer h3,
-    .footer h4,
-    .cart-head strong {
-      color: var(--burgundy);
-    }
-
-    .nav-links,
-    .hero-copy,
-    .section-lead,
-    .copy-panel p,
-    .feature-list li,
-    .essence-card p,
-    .product-body p,
-    .video-copy p,
-    .finance-copy p,
-    .city-strip span,
-    .benefit span,
-    details p,
-    .footer p,
-    .footer a {
-      color: rgba(23, 23, 23, .78);
-    }
-
-    .hero::before {
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, .96) 0%, rgba(255, 255, 255, .84) 45%, rgba(255, 255, 255, .42) 100%),
-        url("https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg") center / cover;
-      filter: saturate(.2) contrast(1.05);
-    }
-
-    .hero::after {
-      background:
-        radial-gradient(circle at 68% 35%, rgba(191, 195, 199, .4), transparent 28%),
-        linear-gradient(to bottom, transparent 0%, var(--black) 98%);
-    }
-
-    h1 {
-      color: var(--burgundy);
-      text-shadow: 0 8px 34px rgba(164, 0, 18, .12);
-    }
-
-    .hero-copy {
-      color: rgba(23, 23, 23, .82);
-    }
-
-    .trust-row,
-    .copy-panel,
-    .essence-card,
-    .product-card,
-    .video-preview,
-    .finance-copy,
-    .benefit,
-    details,
-    .quote {
-      background: linear-gradient(145deg, rgba(255, 255, 255, .92), rgba(238, 238, 236, .72));
-      box-shadow: var(--shadow);
-    }
-
-    .trust-item strong,
-    .stars,
-    .video-copy blockquote {
-      color: var(--burgundy);
-    }
-
-    .bottle {
-      background:
-        linear-gradient(115deg, rgba(255, 255, 255, .7), transparent 28%),
-        radial-gradient(circle at 50% 12%, rgba(191, 195, 199, .5), transparent 22%),
-        linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(218, 220, 222, .82));
-      box-shadow: var(--shadow), inset 0 0 40px rgba(255, 255, 255, .56);
-    }
-
-    .bottle::before {
-      background: linear-gradient(135deg, #ffffff, #c8ccd0);
-    }
-
-    .bottle-label {
-      background: rgba(255, 255, 255, .62);
-    }
-
-    .bottle-label strong {
-      color: var(--burgundy);
-    }
-
-    .kits {
-      background:
-        radial-gradient(circle at 50% 0%, rgba(191, 195, 199, .38), transparent 34%),
-        linear-gradient(180deg, rgba(255, 255, 255, .72), transparent);
-    }
-
-    .kit-card::before {
-      background: linear-gradient(135deg, rgba(255, 255, 255, .2), transparent 32%, rgba(164, 0, 18, .22));
-    }
-
-    .kit-card h3,
-    .kit-card p,
-    .kit-card ul,
-    .split-card h3,
-    .split-card p {
-      color: #fff;
-    }
-
-    .kit-tag {
-      color: var(--burgundy);
-    }
-
-    .product-media,
-    .lux-image,
-    .video-frame,
-    .finance-image,
-    .source-gallery figure,
-    .split-card,
-    .final-cta {
-      filter: grayscale(.22);
-    }
-
-    .testimonials {
-      background: linear-gradient(180deg, transparent, rgba(164, 0, 18, .08), transparent);
-    }
-
-    .final-cta {
-      background:
-        linear-gradient(to bottom, rgba(255, 255, 255, .42), rgba(255, 255, 255, .9)),
-        url("https://emprendeconperfumeria.com/images/Motivacion.jpeg") center / cover;
-    }
-
-    .final-cta h2 {
-      color: var(--burgundy);
-    }
-
-    .final-cta p {
-      color: rgba(23, 23, 23, .78);
-    }
-
-    .footer {
-      background: #f2f2f0;
-      border-top: 1px solid var(--line);
-    }
-
-    .cart-panel {
-      background: rgba(255, 255, 255, .95);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .18);
-    }
-
-    .cart-item {
-      color: rgba(23, 23, 23, .84);
-    }
-
-    .cart-empty,
-    .cart-note {
-      color: rgba(23, 23, 23, .58);
-    }
-
     @media (max-width: 980px) {
-      .nav {
-        min-height: 74px;
-      }
-
       .nav-links {
         display: none;
       }
 
-      .header-cta {
-        padding: 0 16px;
-      }
-
       .hero-grid,
       .section-heading,
-      .why-grid,
-      .faq-wrap,
-      .footer-grid {
+      .two-col,
+      .video-block,
+      .motivation,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
-      .perfume-stage {
-        min-height: 420px;
-      }
-
-      .kit-grid,
-      .testimonial-grid,
-      .benefits-grid,
-      .product-grid,
-      .city-strip,
-      .source-gallery,
-      .essence-card,
-      .finance-band,
-      .video-preview {
+      .gallery,
+      .list-grid {
         grid-template-columns: 1fr;
       }
 
-      .source-gallery figure,
-      .source-gallery figure:nth-child(2),
-      .source-gallery figure:nth-child(3),
-      .source-gallery figure:nth-child(5),
-      .source-gallery figure:nth-child(6) {
+      .gallery figure,
+      .gallery figure:nth-child(2),
+      .gallery figure:nth-child(3),
+      .gallery figure:nth-child(5),
+      .gallery figure:nth-child(6) {
         min-height: 320px;
         transform: none;
       }
 
-      .kit-card {
-        min-height: 430px;
+      .kit-track {
+        animation-duration: 42s;
       }
 
-      .transformation {
+      .statement-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -1388,180 +652,109 @@
         width: min(100% - 28px, 1180px);
       }
 
-      .site-header {
-        position: sticky;
+      .brand-title {
+        font-size: .94rem;
       }
 
-      .brand-mark {
-        width: 42px;
-        height: 42px;
-      }
-
-      .brand-name {
-        font-size: 1rem;
-      }
-
-      .brand-name span {
+      .brand-title span {
         font-size: .52rem;
       }
 
-      .header-cta {
+      .nav .btn {
         display: none;
       }
 
       .hero {
         min-height: auto;
-        padding: 70px 0 54px;
+        padding: 62px 0 54px;
       }
 
       h1 {
-        font-size: clamp(3rem, 17vw, 5rem);
+        font-size: clamp(2.8rem, 16vw, 4.6rem);
       }
 
-      .hero-grid {
-        gap: 28px;
+      .hero-actions .btn,
+      .whatsapp-row .btn {
+        width: 100%;
       }
 
-      .trust-row {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-item {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .trust-item:last-child {
-        border-bottom: 0;
-      }
-
-      .perfume-stage {
-        min-height: 340px;
-      }
-
-      .perfume-stage::before {
-        width: 280px;
-        height: 280px;
-      }
-
-      .bottle {
-        width: 170px;
-        height: 270px;
-        border-radius: 32px 32px 22px 22px;
-      }
-
-      .bottle::before {
-        top: -58px;
-        left: 48px;
-        width: 74px;
-        height: 58px;
-      }
-
-      .bottle::after {
-        top: -84px;
-        left: 37px;
-        width: 96px;
-        height: 28px;
-      }
-
-      .bottle-label {
-        inset: 78px 20px auto;
-        min-height: 105px;
-      }
-
-      .bottle-label strong {
-        font-size: 1.05rem;
-      }
-
-      .section {
-        padding: 76px 0;
-      }
-
-      .copy-panel,
-      .split-card,
-      .quote,
-      .benefit {
+      .text-panel,
+      .statement {
         padding: 24px;
       }
 
-      .lux-image,
-      .split-card {
-        min-height: 330px;
+      .photo-panel,
+      .video-cover,
+      .motivation-image {
+        min-height: 320px;
       }
 
-      .hero-actions .btn {
-        width: 100%;
+      .kit-slide img {
+        height: 320px;
+      }
+
+      .section {
+        padding: 72px 0;
       }
 
       .mobile-cta {
         display: flex;
       }
-
-      .floating-cart {
-        right: 16px;
-        bottom: 82px;
-        width: 54px;
-        height: 54px;
-      }
-
-      .cart-panel {
-        right: 14px;
-        bottom: 82px;
-      }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
+  <header class="header">
     <div class="shell nav">
-      <a href="#inicio" class="brand" aria-label="Mistiko inicio">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="https://emprendeconperfumeria.com/images/Logo.png" alt="">
+      <a class="brand" href="#inicio" aria-label="Perfumeria Mistiko inicio">
+        <span class="brand-mark">
+          <img src="https://emprendeconperfumeria.com/images/Logo.png" alt="Perfumeria Mistiko">
         </span>
-        <span class="brand-name">Mistiko<span>Perfumeria Premium</span></span>
+        <span class="brand-title">Mistiko<span>Perfumeria</span></span>
       </a>
-
       <nav class="nav-links" aria-label="Navegacion principal">
-        <a href="#productos">Productos</a>
         <a href="#kits">Kits</a>
         <a href="#modelo">Servicios</a>
         <a href="#quienes-somos">Quienes somos</a>
-        <a href="#beneficios">Beneficios</a>
-        <a href="#testimonios">Testimonios</a>
-        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
       </nav>
-
-      <a class="header-cta" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20comprar%20perfumes%20en%20Cali.">Comprar en Cali</a>
+      <a class="btn" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20informacion%20sobre%20los%20kits%20de%20perfumeria.">Contactanos</a>
     </div>
   </header>
 
   <main id="inicio">
     <section class="hero">
-      <div class="gold-dust" aria-hidden="true"></div>
       <div class="shell hero-grid">
         <div>
-          <span class="eyebrow">Cali Colombia | Perfumeria premium</span>
-          <h1>El lujo tiene aroma</h1>
-          <p class="hero-copy">Emprende con perfumeria artesanal, kits listos para vender y un modelo de negocio probado, escalable y rentable. La forma mas practica de empezar: productos de alta rotacion, calidad que impulsa la recompra y asesoria directa por WhatsApp.</p>
+          <span class="eyebrow">Perfumeria Mistiko</span>
+          <h1>Emprende con perfumeria artesanal</h1>
+          <p class="hero-copy">Kits listos para vender y un modelo de negocio probado, escalable y rentable. La forma mas practica de empezar tu emprendimiento de perfumeria: kits de alta rotacion, con calidad que impulsa la recompra y productos listos para la venta.</p>
           <div class="hero-actions">
-            <a class="btn gold" href="#productos">Ver productos</a>
-            <a class="btn ghost" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20comprar%20perfumes%20en%20Cali.">Comprar por WhatsApp</a>
-          </div>
-          <div class="trust-row" aria-label="Datos de confianza">
-            <div class="trust-item"><strong>Cali</strong><span>Entrega y asesoria local</span></div>
-            <div class="trust-item"><strong>50%+</strong><span>Concentracion de esencia</span></div>
-            <div class="trust-item"><strong>12/12</strong><span>Producto de demanda anual</span></div>
+            <a class="btn" href="#kits">Ver kits</a>
+            <a class="btn silver" href="#contacto">Hablar por WhatsApp</a>
           </div>
         </div>
+        <aside class="logo-card">
+          <img src="https://emprendeconperfumeria.com/images/Logo.png" alt="Logo Perfumeria Mistiko">
+        </aside>
+      </div>
+    </section>
 
-        <div class="perfume-stage" aria-label="Mockup visual de botella Mistiko">
-          <div class="bottle">
-            <div class="bottle-label">
-              <div>
-                <strong>MISTIKO</strong>
-                <span>Luxury essence</span>
-              </div>
-            </div>
+    <section class="section" id="modelo">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Modelo de emprendimiento</span>
+            <h2>En que consiste este emprendimiento</h2>
+          </div>
+          <p class="section-lead">La informacion original se conserva completa y se presenta de forma mas clara, profesional y facil de leer.</p>
+        </div>
+        <div class="two-col">
+          <div class="photo-panel" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg')" role="img" aria-label="Kit de perfumeria artesanal Mistiko"></div>
+          <div class="panel text-panel">
+            <p>Es un modelo de emprendimiento basado en la venta de kits de perfumes artesanales. Los kits se entregan elaborados y listos para la venta, lo que permite al emprendedor iniciar su actividad comercial desde el primer momento y enfocarse en la venta y comercializacion del perfume.</p>
+            <p>De forma complementaria, contamos con una linea de kits de insumos para preparacion, pensada para quienes desean aprender el proceso de elaboracion de perfumes y producir de manera independiente.</p>
+            <p>No se trata de un curso teorico ni de una franquicia. Es una estructura practica, probada y sostenible de emprendimiento, disenada para iniciar un negocio real en la venta de perfumes.</p>
           </div>
         </div>
       </div>
@@ -1571,12 +764,12 @@
       <div class="shell">
         <div class="section-heading">
           <div>
-            <span class="eyebrow">Galeria Mistiko</span>
-            <h2>Todo lo que necesitas para empezar tu negocio de perfumeria artesanal.</h2>
+            <span class="eyebrow">Galeria original</span>
+            <h2>Todo lo que necesitas para empezar tu negocio de perfumeria artesanal</h2>
           </div>
-          <p class="section-lead">Estas son las mismas fotos de la pagina actual, ahora distribuidas con una presentacion mas premium, limpia y orientada a conversion.</p>
+          <p class="section-lead">Las imagenes se mantienen en el mismo bloque visual del sitio original, con una distribucion mas elegante para escritorio y movil.</p>
         </div>
-        <div class="source-gallery" aria-label="Fotos reales de Perfumeria Mistiko">
+        <div class="gallery" aria-label="Imagenes originales de kits Mistiko">
           <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg')"></figure>
           <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg')"></figure>
           <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg')"></figure>
@@ -1588,159 +781,91 @@
       </div>
     </section>
 
-    <section class="section" id="productos">
+    <section class="section" id="kits">
       <div class="shell">
-        <div class="section-heading">
+        <div class="video-block">
+          <div class="video-cover" role="img" aria-label="Portada de video de kits Mistiko"></div>
           <div>
-            <span class="eyebrow">Compra directa</span>
-            <h2>Perfumes premium disponibles en Cali.</h2>
+            <span class="eyebrow">Nuestros kits</span>
+            <h2>Desliza para ver nuestros kits de perfumeria</h2>
+            <blockquote class="quote">Perfumes elaborados con alta concentracion de esencia, mas del 50%, e incluyen feromonas.</blockquote>
           </div>
-          <p class="section-lead">El cliente elige el producto, lo agrega al pedido y envia la solicitud por WhatsApp. Los precios, disponibilidad y aroma exacto se confirman antes de pagar.</p>
         </div>
-
-        <div class="product-grid">
-          <article class="product-card">
-            <div class="product-media" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg')"></div>
-            <div class="product-body">
-              <h3>Perfume Masculino Premium</h3>
-              <p>Aromas intensos, elegantes y con presencia para uso diario o venta.</p>
-              <div class="product-meta"><span>Alta rotacion</span><span>Cali</span></div>
-              <button class="btn small red add-to-cart" data-product="Perfume Masculino Premium">Agregar pedido</button>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-media" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg')"></div>
-            <div class="product-body">
-              <h3>Perfume Femenino Premium</h3>
-              <p>Fragancias dulces, florales y sofisticadas para clientas exigentes.</p>
-              <div class="product-meta"><span>Mas pedido</span><span>Cali</span></div>
-              <button class="btn small red add-to-cart" data-product="Perfume Femenino Premium">Agregar pedido</button>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-media" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg')"></div>
-            <div class="product-body">
-              <h3>Perfumes Arabes</h3>
-              <p>Inspiracion Dubai: aromas potentes, misteriosos y de alto impacto.</p>
-              <div class="product-meta"><span>Luxury</span><span>Cali</span></div>
-              <button class="btn small red add-to-cart" data-product="Perfumes Arabes">Agregar pedido</button>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-media" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen15.jpeg')"></div>
-            <div class="product-body">
-              <h3>Kit Para Emprender</h3>
-              <p>Producto, direccion y presentacion para vender perfumes desde casa.</p>
-              <div class="product-meta"><span>Negocio</span><span>Cali</span></div>
-              <button class="btn small red add-to-cart" data-product="Kit Para Emprender">Agregar pedido</button>
-            </div>
-          </article>
+        <div class="kit-carousel" aria-label="Carrusel automatico de kits de perfumeria Mistiko">
+          <div class="kit-track">
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg" alt="Kit de perfumeria Mistiko imagen 1">
+              <figcaption>Kit Mistiko</figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg" alt="Kit de perfumeria Mistiko imagen 2">
+              <figcaption>Insumos premium</figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg" alt="Kit de perfumeria Mistiko imagen 3">
+              <figcaption>Alta rotacion</figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen15.jpeg" alt="Kit de perfumeria Mistiko imagen 4">
+              <figcaption>Listo para vender</figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen16.jpeg" alt="Kit de perfumeria Mistiko imagen 5">
+              <figcaption>Emprendimiento</figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen17.jpeg" alt="Kit de perfumeria Mistiko imagen 6">
+              <figcaption>Esencias premium</figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen18.jpeg" alt="Kit de perfumeria Mistiko imagen 7">
+              <figcaption>Recompra</figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg" alt="">
+              <figcaption>Kit Mistiko</figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg" alt="">
+              <figcaption>Insumos premium</figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg" alt="">
+              <figcaption>Alta rotacion</figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen15.jpeg" alt="">
+              <figcaption>Listo para vender</figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen16.jpeg" alt="">
+              <figcaption>Emprendimiento</figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen17.jpeg" alt="">
+              <figcaption>Esencias premium</figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen18.jpeg" alt="">
+              <figcaption>Recompra</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="shell">
-        <div class="essence-card">
+        <div class="section-heading">
           <div>
             <span class="eyebrow">Esencias disponibles</span>
-            <h3>Explora nuestra variedad de esencias para perfumes.</h3>
-            <p>Perfumes elaborados con alta concentracion de esencia, mas del 50%, e incluyen feromonas. La disponibilidad especifica se valida directamente antes de comprar.</p>
+            <h2>Explora nuestra variedad de esencias para perfumes</h2>
           </div>
-          <a class="btn gold" href="https://perfumeriamistiko.github.io">Explorar esencias</a>
+          <p class="section-lead">El sitio original dirige a la coleccion de esencias disponibles. Se conserva el enlace para que el cliente pueda explorar la variedad.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="modelo">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Por que funciona</span>
-            <h2>En que consiste este emprendimiento.</h2>
-          </div>
-          <p class="section-lead">Un modelo basado en kits de perfumes artesanales que se entregan elaborados y listos para la venta, para que el emprendedor pueda iniciar desde el primer momento.</p>
-        </div>
-
-        <div class="why-grid">
-          <div class="lux-image" role="img" aria-label="Perfume premium con ambiente oscuro y elegante"></div>
-          <div class="copy-panel">
-            <h3>No es un curso teorico ni una franquicia.</h3>
-            <p>Es una estructura practica, probada y sostenible de emprendimiento, disenada para iniciar un negocio real en la venta de perfumes.</p>
-            <p>De forma complementaria, existe una linea de kits de insumos para preparacion, pensada para quienes desean aprender el proceso de elaboracion de perfumes y producir de manera independiente.</p>
-            <ul class="feature-list">
-              <li>Kit segun la modalidad elegida.</li>
-              <li>Insumos o productos listos para venta.</li>
-              <li>Acompanamiento inicial para vender con direccion.</li>
-              <li>Orientacion practica para comercializar.</li>
-              <li>Acceso a recompra de productos e insumos.</li>
-              <li>Detalles especificos validados directamente por WhatsApp.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section kits" id="kits">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Coleccion de kits</span>
-            <h2>Kits premium para empezar con presencia.</h2>
-          </div>
-          <p class="section-lead">Desliza para ver nuestros kits de perfumeria. Cada modalidad se confirma por WhatsApp segun tu perfil, objetivo y presupuesto.</p>
-        </div>
-
-        <div class="kit-grid">
-          <article class="kit-card" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen16.jpeg')">
-            <span class="kit-tag">Inicio premium</span>
-            <h3>Kit Gold</h3>
-            <p>Ideal para comenzar con una inversion accesible y productos de alta salida.</p>
-            <ul>
-              <li>Perfumes seleccionados para venta</li>
-              <li>Guia practica de comercializacion</li>
-              <li>Acceso a recompra</li>
-            </ul>
-            <button class="btn red add-to-cart" data-product="Kit Gold">Comenzar</button>
-          </article>
-
-          <article class="kit-card" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen17.jpeg')">
-            <span class="kit-tag">Mas vendido</span>
-            <h3>Kit Black</h3>
-            <p>Mas inventario, mas imagen y mejor estructura para vender con consistencia.</p>
-            <ul>
-              <li>Mayor variedad de perfumes</li>
-              <li>Branding premium para presentacion</li>
-              <li>Soporte inicial de ventas</li>
-            </ul>
-            <button class="btn red add-to-cart" data-product="Kit Black">Quiero escalar</button>
-          </article>
-
-          <article class="kit-card" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen18.jpeg')">
-            <span class="kit-tag">Experiencia luxury</span>
-            <h3>Kit Royal</h3>
-            <p>La experiencia completa para emprender con una presencia superior desde el primer contacto.</p>
-            <ul>
-              <li>Coleccion exclusiva de alto impacto</li>
-              <li>Imagen elegante para clientes premium</li>
-              <li>Maximo potencial de margen</li>
-            </ul>
-            <button class="btn red add-to-cart" data-product="Kit Royal">Quiero el premium</button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell">
-        <div class="video-preview">
-          <div class="video-frame" role="img" aria-label="Portada de video de Perfumeria Mistiko"></div>
-          <div class="video-copy">
-            <span class="eyebrow">Nuestros kits</span>
-            <h3>Perfumes elaborados, listos para vender.</h3>
-            <p>Esta seccion conserva la portada visual del video original y refuerza el mensaje principal de los kits de perfumeria artesanal.</p>
-            <blockquote>Perfumes elaborados con alta concentracion de esencia, mas del 50%, e incluyen feromonas.</blockquote>
-          </div>
+        <div class="panel text-panel">
+          <p>Conoce nuestra variedad de esencias para perfumes y valida la disponibilidad directamente con Perfumeria Mistiko.</p>
+          <a class="btn" href="https://perfumeriamistiko.github.io">Explora aqui nuestra variedad de esencias</a>
         </div>
       </div>
     </section>
@@ -1749,16 +874,39 @@
       <div class="shell">
         <div class="section-heading">
           <div>
-            <span class="eyebrow">Venta local</span>
-            <h2>Hecho para vender en Cali.</h2>
+            <span class="eyebrow">Que incluye</span>
+            <h2>Que incluye el modelo de emprendimiento</h2>
           </div>
-          <p class="section-lead">La pagina esta enfocada en conversion local: confianza, contacto rapido, entrega, asesoria y cierre por WhatsApp.</p>
+          <p class="section-lead">Los detalles especificos se validan directamente por WhatsApp, de acuerdo con la modalidad elegida.</p>
         </div>
-        <div class="city-strip">
-          <div><strong>Entrega en Cali</strong><span>Coordina domicilio o punto de entrega segun disponibilidad.</span></div>
-          <div><strong>Asesoria por WhatsApp</strong><span>Te ayudamos a elegir aroma, kit o modalidad de emprendimiento.</span></div>
-          <div><strong>Pago confirmado</strong><span>La compra se valida directamente antes del despacho.</span></div>
+        <div class="list-grid">
+          <div class="list-card"><strong>Kit segun la modalidad elegida</strong></div>
+          <div class="list-card"><strong>Insumos o productos listos para venta</strong></div>
+          <div class="list-card"><strong>Acompanamiento inicial</strong></div>
+          <div class="list-card"><strong>Orientacion practica para comercializar</strong></div>
+          <div class="list-card"><strong>Acceso a recompra de productos e insumos</strong></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell statement-grid">
+        <article class="statement">
+          <span class="eyebrow">Importante</span>
+          <h3>Informacion importante antes de continuar</h3>
+          <p>Que el kit este listo para la venta no significa ventas automaticas. Los resultados dependen de la constancia, la disciplina y la accion de ofrecer el producto.</p>
+          <p>El crecimiento depende del emprendedor.</p>
+        </article>
+        <article class="statement">
+          <span class="eyebrow">Perfil ideal</span>
+          <h3>Este modelo es para ti si:</h3>
+          <ul class="bullet-list">
+            <li>Quieres vender un producto de alta demanda durante los doce meses del ano.</li>
+            <li>Buscas un negocio practico, tangible, sostenible y escalable.</li>
+            <li>Estas dispuesto a ofrecer y comercializar el producto.</li>
+            <li>Entiendes que emprender requiere accion.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
@@ -1766,238 +914,78 @@
       <div class="shell">
         <div class="section-heading">
           <div>
-            <span class="eyebrow">Experiencia real</span>
-            <h2>Modelo desarrollado con experiencia aplicada en perfumeria.</h2>
+            <span class="eyebrow">Quienes somos</span>
+            <h2>Modelo desarrollado con experiencia real en perfumeria</h2>
           </div>
-          <p class="section-lead">El sistema se basa en elaboracion, comercializacion y recompra de clientes. No es un esquema teorico ni improvisado.</p>
+          <p class="section-lead">El sistema se basa en experiencia aplicada, no en un esquema teorico ni improvisado.</p>
         </div>
-
-        <div class="transformation">
-          <div class="split-card" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg')">
-            <h3>Practico</h3>
-            <p>El emprendedor puede enfocarse en ofrecer y comercializar el perfume, no en empezar desde cero sin direccion.</p>
+        <div class="two-col">
+          <div class="panel text-panel">
+            <p>El sistema se basa en experiencia aplicada en elaboracion, comercializacion y recompra de clientes.</p>
+            <p>No es un esquema teorico ni improvisado. Es un modelo construido desde la practica real del negocio de perfumeria.</p>
           </div>
-          <div class="split-card" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen15.jpeg')">
-            <h3>Sostenible</h3>
-            <p>Productos de alta demanda durante los doce meses del ano, con acceso a recompra de productos e insumos.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="beneficios">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Beneficios</span>
-            <h2>Todo lo que necesita una marca que quiere verse cara.</h2>
-          </div>
-          <p class="section-lead">Mensajes cortos, directos y orientados a conversion. Perfectos para desktop y movil.</p>
-        </div>
-
-        <div class="benefits-grid">
-          <div class="benefit"><strong>Alta demanda</strong><span>Producto de consumo constante durante los doce meses del ano.</span></div>
-          <div class="benefit"><strong>Negocio practico</strong><span>Modelo tangible, sostenible y escalable para vender desde el primer momento.</span></div>
-          <div class="benefit"><strong>Accion comercial</strong><span>Es para quien esta dispuesto a ofrecer, comercializar y moverse.</span></div>
-          <div class="benefit"><strong>Emprendimiento real</strong><span>Emprender requiere accion, constancia y disciplina.</span></div>
-          <div class="benefit"><strong>Acompanamiento</strong><span>Orientacion inicial para vender con una estructura clara.</span></div>
-          <div class="benefit"><strong>Recompra</strong><span>Acceso a productos e insumos para sostener el negocio.</span></div>
+          <div class="photo-panel" style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen18.jpeg')" role="img" aria-label="Imagen final Mistiko"></div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="shell finance-band">
-        <div class="finance-copy">
+      <div class="shell motivation">
+        <div class="panel text-panel">
           <span class="eyebrow">Financiacion</span>
-          <h3>No tener dinero ya no es una excusa para no emprender.</h3>
+          <h2>No tener dinero ya no es una excusa para no emprender</h2>
           <p>Emprender un negocio rentable no depende de cuanto dinero tengas hoy, sino de tomar una decision informada.</p>
           <p>Nuestros kits de emprendimiento en perfumeria artesanal estan disenados para que puedas iniciar con una inversion accesible, productos de alta rotacion y un margen que permite cubrir el credito y seguir generando utilidad real.</p>
           <p>Gracias a aliados financieros como Addi y Sistecredito, hoy puedes empezar incluso si no cuentas con capital inicial.</p>
-          <a class="btn gold" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20saber%20que%20kit%20se%20adapta%20mejor%20a%20mi%20perfil.">Validar mi kit</a>
+          <a class="btn" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20saber%20que%20tipo%20de%20kit%20se%20adapta%20mejor%20a%20mi.">Validar mi kit</a>
         </div>
-        <div class="finance-image" role="img" aria-label="Motivacion para emprender con perfumeria"></div>
+        <div class="motivation-image" role="img" aria-label="Motivacion para emprender con perfumeria Mistiko"></div>
       </div>
     </section>
 
-    <section class="section testimonials" id="testimonios">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Prueba social</span>
-            <h2>Historias que construyen confianza.</h2>
+    <section class="section" id="contacto">
+      <div class="shell contact-grid">
+        <div class="panel text-panel">
+          <span class="eyebrow">Contacto</span>
+          <h2>Quieres saber que tipo de kit se adapta mejor a ti?</h2>
+          <p>Valida directamente por WhatsApp si este modelo de emprendimiento es adecuado para tu perfil.</p>
+          <div class="contact-list">
+            <div class="contact-item"><span>Visitanos</span>Estamos en Palmira - Valle del Cauca.</div>
+            <div class="contact-item"><span>Sede 1</span>Carrera 19 No. 22-31, Local 125, Centro Comercial Sembrador Plaza, Palmira - Valle del Cauca.</div>
+            <div class="contact-item"><span>Sede 2</span>Calle 29 No. 29-37, Centro, Palmira - Valle.</div>
+            <div class="contact-item"><span>Punto fisico</span>Lunes a sabado de 10:00 am a 07:00 pm.</div>
+            <div class="contact-item"><span>Lineas de WhatsApp</span>Lunes a domingo de 08:00 am a 06:30 pm.</div>
           </div>
-          <p class="section-lead">Usa fotos reales y testimonios verificables cuando publiques. Aqui queda el diseno premium listo.</p>
+          <div class="whatsapp-row">
+            <a class="btn" href="https://wa.me/573224929886">322 492 9886</a>
+            <a class="btn silver" href="https://wa.me/573163309586">316 330 9586</a>
+          </div>
         </div>
-
-        <div class="testimonial-grid">
-          <article class="quote">
-            <div class="stars">5/5</div>
-            <p>"Comence vendiendo a conocidos y ahora tengo clientes que me escriben cada semana para repetir aroma."</p>
-            <strong>Maria G. | Emprendedora</strong>
-          </article>
-          <article class="quote">
-            <div class="stars">5/5</div>
-            <p>"La presentacion cambio todo. Cuando el producto se ve premium, el cliente pregunta con otra actitud."</p>
-            <strong>Andres R. | Palmira</strong>
-          </article>
-          <article class="quote">
-            <div class="stars">5/5</div>
-            <p>"No sabia por donde empezar. El kit me dio producto, direccion y una forma clara de ofrecer."</p>
-            <strong>Laura M. | Cali</strong>
-          </article>
+        <div class="panel text-panel">
+          <span class="eyebrow">Redes</span>
+          <h2>Perfumeria e insumos al por mayor y detal</h2>
+          <p>Esencias premium, alta calidad y larga duracion.</p>
+          <div class="contact-list">
+            <div class="contact-item"><span>Facebook</span><a href="https://www.facebook.com/PerfumeriaMistiko">PerfumeriaMistiko</a></div>
+            <div class="contact-item"><span>Instagram</span><a href="https://www.instagram.com/perfumeriamistiko">@perfumeriamistiko</a></div>
+            <div class="contact-item"><span>Ubicacion</span>Palmira, Valle del Cauca.</div>
+            <div class="contact-item"><span>Web</span><a href="https://emprendeconperfumeria.com/kits">emprendeconperfumeria.com/kits</a></div>
+          </div>
+          <div class="whatsapp-row">
+            <img class="whatsapp-icon" src="https://emprendeconperfumeria.com/images/iconoWapp.png" alt="WhatsApp Mistiko">
+            <a class="btn" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20informacion%20sobre%20los%20kits%20de%20perfumeria.">Contactanos</a>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="shell faq-wrap">
-        <div>
-          <span class="eyebrow">Preguntas frecuentes</span>
-          <h2>Resuelve dudas antes del WhatsApp.</h2>
-        </div>
-        <div class="faq-list">
-          <details open>
-            <summary>Necesito experiencia para empezar?</summary>
-            <p>No. El modelo esta pensado para personas que quieren iniciar con productos listos para vender, acompanamiento inicial y orientacion practica.</p>
-          </details>
-          <details>
-            <summary>Los kits llegan listos para la venta?</summary>
-            <p>Segun la modalidad elegida, puedes recibir productos elaborados o insumos para preparacion. Los detalles se validan por WhatsApp.</p>
-          </details>
-          <details>
-            <summary>Cuanto puedo ganar?</summary>
-            <p>Que el kit este listo para la venta no significa ventas automaticas. Los resultados dependen de constancia, disciplina y de ofrecer el producto. El crecimiento depende del emprendedor.</p>
-          </details>
-          <details>
-            <summary>Este modelo es para mi?</summary>
-            <p>Es para ti si quieres vender un producto de alta demanda todo el ano, buscas un negocio practico, tangible, sostenible y escalable, estas dispuesto a comercializar y entiendes que emprender requiere accion.</p>
-          </details>
-          <details>
-            <summary>Donde estan ubicados?</summary>
-            <p>Estamos en Palmira, Valle del Cauca: Carrera 19 No. 22-31, local 125, Centro Comercial Sembrador Plaza. Tambien atendemos clientes interesados de Cali.</p>
-          </details>
-          <details>
-            <summary>Como contacto a Mistiko?</summary>
-            <p>WhatsApp principal: 322 4929886. Segunda linea: 316 3309586. Lineas de WhatsApp de lunes a domingo de 08:00 am a 06:30 pm. Punto fisico de lunes a sabado de 10:00 am a 07:00 pm.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="shell">
-        <h2>El momento perfecto para empezar es ahora.</h2>
-        <p>Quieres saber que tipo de kit se adapta mejor a ti? Valida directamente por WhatsApp si este modelo de emprendimiento es adecuado para tu perfil.</p>
-        <a class="btn gold" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20saber%20que%20kit%20se%20adapta%20mejor%20a%20mi%20perfil.">Contactanos</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="shell">
-      <div class="footer-grid">
-        <div>
-          <h3>Mistiko Perfumeria</h3>
-          <p>Perfumeria premium para clientes y emprendedores en Cali, Colombia. Compra perfumes, kits y asesoria por WhatsApp.</p>
-        </div>
-        <div>
-          <h4>Navegacion</h4>
-          <a href="#inicio">Inicio</a>
-          <a href="#kits">Kits</a>
-          <a href="#faq">FAQ</a>
-        </div>
-        <div>
-          <h4>Contacto</h4>
-          <a href="https://wa.me/573224929886">322 4929886</a>
-          <a href="https://wa.me/573163309586">316 3309586</a>
-          <a href="https://www.instagram.com/perfumeriamistiko">Instagram</a>
-          <a href="https://www.facebook.com/perfumeriamistiko">Facebook</a>
-          <img class="wapp-icon" src="https://emprendeconperfumeria.com/images/iconoWapp.png" alt="WhatsApp Mistiko">
-        </div>
-        <div>
-          <h4>Ubicacion</h4>
-          <p>Ventas en Cali y Palmira, Valle del Cauca<br>Centro Comercial Sembrador Plaza</p>
-        </div>
-      </div>
-      <div class="copyright">(c) 2026 Perfumeria Mistiko. Diseno luxury black, gold & burgundy.</div>
+      (c) 2026 Perfumeria Mistiko. Perfumeria e insumos al por mayor y detal.
     </div>
   </footer>
 
-  <button class="floating-cart" type="button" aria-label="Abrir pedido" id="openCart">0</button>
-
-  <aside class="cart-panel" id="cartPanel" aria-label="Pedido por WhatsApp">
-    <div class="cart-head">
-      <strong>Pedido Mistiko</strong>
-      <button class="cart-close" type="button" id="closeCart" aria-label="Cerrar pedido">X</button>
-    </div>
-    <div class="cart-items" id="cartItems">
-      <div class="cart-empty">Agrega productos o kits para enviar tu pedido por WhatsApp.</div>
-    </div>
-    <div class="cart-actions">
-      <a class="btn gold" id="sendWhatsapp" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20comprar%20perfumes%20en%20Cali.">Enviar por WhatsApp</a>
-      <p class="cart-note">Precios, aromas y disponibilidad se confirman antes de pagar.</p>
-    </div>
-  </aside>
-
-  <a class="mobile-cta" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20comprar%20perfumes%20en%20Cali.">Comprar en Cali</a>
-
-  <script>
-    const cart = [];
-    const cartPanel = document.getElementById("cartPanel");
-    const cartItems = document.getElementById("cartItems");
-    const openCart = document.getElementById("openCart");
-    const closeCart = document.getElementById("closeCart");
-    const sendWhatsapp = document.getElementById("sendWhatsapp");
-    const phone = "573224929886";
-
-    function renderCart() {
-      openCart.textContent = cart.length;
-
-      if (!cart.length) {
-        cartItems.innerHTML = '<div class="cart-empty">Agrega productos o kits para enviar tu pedido por WhatsApp.</div>';
-        sendWhatsapp.href = `https://wa.me/${phone}?text=${encodeURIComponent("Hola Mistiko, quiero comprar perfumes en Cali.")}`;
-        return;
-      }
-
-      cartItems.innerHTML = cart.map((item, index) => `
-        <div class="cart-item">
-          <span>${item}</span>
-          <button type="button" data-remove="${index}" aria-label="Quitar ${item}">Quitar</button>
-        </div>
-      `).join("");
-
-      const message = [
-        "Hola Mistiko, quiero comprar en Cali.",
-        "",
-        "Me interesan estos productos:",
-        ...cart.map((item, index) => `${index + 1}. ${item}`),
-        "",
-        "Por favor confirmame precio, aromas disponibles, entrega y forma de pago."
-      ].join("\n");
-
-      sendWhatsapp.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    }
-
-    document.querySelectorAll(".add-to-cart").forEach((button) => {
-      button.addEventListener("click", () => {
-        cart.push(button.dataset.product);
-        cartPanel.classList.add("open");
-        renderCart();
-      });
-    });
-
-    cartItems.addEventListener("click", (event) => {
-      const removeIndex = event.target.dataset.remove;
-      if (removeIndex !== undefined) {
-        cart.splice(Number(removeIndex), 1);
-        renderCart();
-      }
-    });
-
-    openCart.addEventListener("click", () => cartPanel.classList.add("open"));
-    closeCart.addEventListener("click", () => cartPanel.classList.remove("open"));
-    renderCart();
-  </script>
+  <a class="mobile-cta" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20informacion%20sobre%20los%20kits%20de%20perfumeria.">Contactanos</a>
 </body>
 </html>
