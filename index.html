@@ -440,7 +440,34 @@
       border: 1px solid var(--line);
       background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(238, 238, 236, .78));
       box-shadow: var(--shadow);
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      overscroll-behavior-x: contain;
+      cursor: grab;
+      scrollbar-width: thin;
+      scrollbar-color: var(--red) rgba(125, 131, 137, .18);
+    }
+
+    .kit-carousel:active,
+    .kit-carousel.is-dragging {
+      cursor: grabbing;
+    }
+
+    .kit-carousel::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .kit-carousel::-webkit-scrollbar-track {
+      background: rgba(125, 131, 137, .16);
+    }
+
+    .kit-carousel::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      border-radius: 999px;
     }
 
     .kit-track {
@@ -448,16 +475,12 @@
       width: max-content;
       gap: 18px;
       padding: 22px;
-      animation: kitSlide 34s linear infinite;
-    }
-
-    .kit-carousel:hover .kit-track {
-      animation-play-state: paused;
     }
 
     .kit-slide {
       width: min(78vw, 330px);
       flex: 0 0 auto;
+      scroll-snap-align: start;
       border: 1px solid var(--line);
       background: #fff;
       box-shadow: 0 16px 36px rgba(0, 0, 0, .1);
@@ -470,6 +493,8 @@
       object-fit: contain;
       background: #fff;
       filter: grayscale(.12) contrast(1.03);
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     .kit-slide figcaption {
@@ -499,15 +524,6 @@
       color: rgba(23, 23, 23, .68);
       font-size: .86rem;
       font-weight: 700;
-    }
-
-    @keyframes kitSlide {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(calc(-50% - 9px));
-      }
     }
 
     .quote {
@@ -743,10 +759,6 @@
         aspect-ratio: auto;
       }
 
-      .kit-track {
-        animation-duration: 42s;
-      }
-
       .statement-grid {
         grid-template-columns: 1fr;
       }
@@ -947,7 +959,7 @@
           <h2>Nuestros Kits</h2>
           <p>Desliza para ver nuestros kits de perfumeria.</p>
         </div>
-        <div class="kit-carousel" aria-label="Carrusel automatico de kits de perfumeria Mistiko">
+        <div class="kit-carousel" aria-label="Carrusel deslizable de kits de perfumeria Mistiko">
           <div class="kit-track">
             <figure class="kit-slide">
               <img src="https://emprendeconperfumeria.com/images/Productos/producto1.jpeg" alt="Kit Singler 1oz">
@@ -1058,127 +1070,6 @@
             </figure>
             <figure class="kit-slide">
               <img src="https://emprendeconperfumeria.com/images/Productos/producto10.jpeg" alt="Kit preparacion 100 perfumes 1oz">
-              <figcaption>
-                <h3>Kit preparacion 100 perfumes 1oz</h3>
-                <ul class="kit-price">
-                  <li>100 frascos Singler + Cartier, Bala o Trinity</li>
-                  <li>1oz de feromonas</li>
-                  <li>25 referencias de fragancias por 60gr c/u</li>
-                  <li>100 fundas + 2 litros de diluyente</li>
-                  <li>Precio: $600.000</li>
-                </ul>
-                <p class="kit-note">La gramera tiene un valor adicional de $30.000.</p>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto1.jpeg" alt="">
-              <figcaption>
-                <h3>Kit Singler 1oz</h3>
-                <ul class="kit-price">
-                  <li>6 unidades: $48.000</li>
-                  <li>12 unidades: $90.000</li>
-                  <li>20 unidades: $140.000</li>
-                  <li>50 unidades: $340.000</li>
-                  <li>100 unidades: $680.000</li>
-                </ul>
-                <p class="kit-note">Se obsequian feromonas y fundas o cajas de presentacion.</p>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto2.jpeg" alt="">
-              <figcaption>
-                <h3>Kit Trinity 1oz</h3>
-                <ul class="kit-price">
-                  <li>6 unidades: $45.000</li>
-                  <li>12 unidades: $80.000</li>
-                  <li>20 unidades: $130.000</li>
-                </ul>
-                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto3.jpeg" alt="">
-              <figcaption>
-                <h3>Kit Cartier 1oz</h3>
-                <ul class="kit-price">
-                  <li>6 unidades: $50.000</li>
-                  <li>12 unidades: $95.000</li>
-                  <li>20 unidades: $150.000</li>
-                </ul>
-                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto4.jpeg" alt="">
-              <figcaption>
-                <h3>Kit Bala 1oz</h3>
-                <ul class="kit-price">
-                  <li>6 unidades: $50.000</li>
-                  <li>12 unidades: $95.000</li>
-                  <li>20 unidades: $150.000</li>
-                </ul>
-                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto5.jpeg" alt="">
-              <figcaption>
-                <h3>Kit Maletin emprendimiento 1oz</h3>
-                <ul class="kit-price">
-                  <li>Incluye maletin</li>
-                  <li>20 perfumes en presentacion Singler</li>
-                  <li>20 fundas o cajas de presentacion</li>
-                </ul>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto6.jpeg" alt="">
-              <figcaption>
-                <h3>Kit Maletines</h3>
-                <ul class="kit-price">
-                  <li>Kit Maletin Emprendedor: $230.000</li>
-                  <li>20 perfumes Singler</li>
-                  <li>20 fundas o cajas de presentacion</li>
-                  <li>Maletin para transportar perfumes</li>
-                  <li>Kit 24 probadores con maletin</li>
-                </ul>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto7.jpeg" alt="">
-              <figcaption>
-                <h3>Insumos</h3>
-                <p class="kit-note">Insumos para quienes desean aprender el proceso de preparacion y producir de manera independiente.</p>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto8.jpeg" alt="">
-              <figcaption>
-                <h3>Kit preparacion 20 perfumes 1oz</h3>
-                <ul class="kit-price">
-                  <li>20 frascos Singler + Cartier, Bala o Trinity</li>
-                  <li>1oz de feromonas</li>
-                  <li>10 referencias de fragancias por 30gr c/u</li>
-                  <li>20 fundas + 500gr diluyente + stickers</li>
-                  <li>Precio: $140.000</li>
-                </ul>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto9.jpeg" alt="">
-              <figcaption>
-                <h3>Kit preparacion 40 perfumes 1oz</h3>
-                <ul class="kit-price">
-                  <li>40 frascos Singler + Cartier, Bala o Trinity</li>
-                  <li>1oz de feromonas</li>
-                  <li>20 referencias de fragancias por 30gr c/u</li>
-                  <li>40 fundas + 1 litro de diluyente + stickers</li>
-                  <li>Precio: $270.000</li>
-                </ul>
-              </figcaption>
-            </figure>
-            <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Productos/producto10.jpeg" alt="">
               <figcaption>
                 <h3>Kit preparacion 100 perfumes 1oz</h3>
                 <ul class="kit-price">
@@ -1365,5 +1256,48 @@
   </footer>
 
   <a class="mobile-cta" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20informacion%20sobre%20los%20kits%20de%20perfumeria.">Contactanos</a>
+  <script>
+    (() => {
+      const carousel = document.querySelector('.kit-carousel');
+      if (!carousel) return;
+
+      let active = false;
+      let startX = 0;
+      let startScroll = 0;
+      let moved = false;
+
+      const stopDrag = () => {
+        active = false;
+        carousel.classList.remove('is-dragging');
+      };
+
+      carousel.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        active = true;
+        moved = false;
+        startX = event.clientX;
+        startScroll = carousel.scrollLeft;
+        carousel.classList.add('is-dragging');
+        carousel.setPointerCapture(event.pointerId);
+      });
+
+      carousel.addEventListener('pointermove', (event) => {
+        if (!active) return;
+        const distance = event.clientX - startX;
+        if (Math.abs(distance) > 5) moved = true;
+        carousel.scrollLeft = startScroll - distance;
+      });
+
+      carousel.addEventListener('pointerup', stopDrag);
+      carousel.addEventListener('pointercancel', stopDrag);
+      carousel.addEventListener('lostpointercapture', stopDrag);
+
+      carousel.addEventListener('click', (event) => {
+        if (!moved) return;
+        event.preventDefault();
+        event.stopPropagation();
+      }, true);
+    })();
+  </script>
 </body>
 </html>
