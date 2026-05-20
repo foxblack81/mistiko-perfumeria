@@ -958,49 +958,6 @@
       filter: grayscale(.16);
     }
 
-    .pdf-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .pdf-card {
-      display: grid;
-      gap: 16px;
-      padding: 30px;
-      border: 1px solid var(--line);
-      background:
-        radial-gradient(circle at 18% 0%, rgba(216, 221, 226, .14), transparent 34%),
-        linear-gradient(145deg, rgba(20, 23, 26, .95), rgba(6, 7, 8, .86));
-      box-shadow: var(--shadow);
-    }
-
-    .pdf-card h3 {
-      color: var(--red);
-      font-size: clamp(1.45rem, 3vw, 2.25rem);
-    }
-
-    .pdf-card p {
-      margin: 0;
-      color: rgba(244, 246, 247, .76);
-    }
-
-    .pdf-meta {
-      color: var(--muted);
-      font-size: .88rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .pdf-viewer {
-      width: 100%;
-      min-height: 520px;
-      border: 1px solid var(--line);
-      background: #070809;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .02);
-    }
-
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, .8fr) minmax(280px, .7fr);
@@ -1096,7 +1053,6 @@
       .two-col,
       .video-block,
       .motivation,
-      .pdf-grid,
       .contact-grid {
         grid-template-columns: 1fr;
       }
@@ -1205,10 +1161,6 @@
         width: 100%;
         align-items: flex-start;
         flex-direction: column;
-      }
-
-      .pdf-viewer {
-        min-height: 430px;
       }
 
       .text-panel,
@@ -1683,40 +1635,6 @@
             <img class="whatsapp-icon" src="https://emprendeconperfumeria.com/images/iconoWapp.png" alt="WhatsApp Mistiko">
             <a class="btn" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20informacion%20sobre%20los%20kits%20de%20perfumeria.">Contactanos</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="catalogo">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Catalogos PDF</span>
-            <h2>Catalogo de precios al final de la pagina</h2>
-          </div>
-          <p class="section-lead">Consulta los catalogos oficiales de Perfumeria Mistiko. Tambien puedes abrir la pagina completa en <strong>www.perfumeriamistiko.com/catalogo</strong>.</p>
-        </div>
-        <div class="pdf-grid">
-          <article class="pdf-card">
-            <span class="pdf-meta">Catalogo general</span>
-            <h3>Catalogo Mistiko</h3>
-            <p>Catalogo principal con productos de Perfumeria Mistiko para venta al por mayor y detal.</p>
-            <iframe class="pdf-viewer" src="/api/pdfs/catalogomistiko-1779278819" title="Catalogo Mistiko PDF"></iframe>
-            <div class="whatsapp-row">
-              <a class="btn" href="/catalogo">Ver pagina catalogo</a>
-              <a class="btn silver" href="/api/pdfs/catalogomistiko-1779278819" download>Descargar</a>
-            </div>
-          </article>
-          <article class="pdf-card">
-            <span class="pdf-meta">Catalogo de insumos</span>
-            <h3>Catalogo Insumos Mistiko</h3>
-            <p>Catalogo de insumos para preparacion, esencias y materiales disponibles para emprendedores.</p>
-            <iframe class="pdf-viewer" src="/api/pdfs/catalogoinsumosmistiko-1779279011" title="Catalogo Insumos Mistiko PDF"></iframe>
-            <div class="whatsapp-row">
-              <a class="btn" href="/catalogo">Ver pagina catalogo</a>
-              <a class="btn silver" href="/api/pdfs/catalogoinsumosmistiko-1779279011" download>Descargar</a>
-            </div>
-          </article>
         </div>
       </div>
     </section>
