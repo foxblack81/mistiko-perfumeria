@@ -10,14 +10,18 @@ const json = (data, init = {}) =>
 export async function onRequestGet({ env }) {
   const list = await env.MISTIKO_PRICE_PDFS.list({ prefix: "pdf:" });
   const items = list.keys
-    .map((item) => ({
-      id: item.name.replace("pdf:", ""),
-      title: item.metadata?.title || "PDF de precios",
-      filename: item.metadata?.filename || "precios-mistiko.pdf",
-      size: item.metadata?.size || 0,
-      uploadedAt: item.metadata?.uploadedAt || "",
-      url: `/api/pdfs/${item.name.replace("pdf:", "")}`
-    }))
+    .map((item) => {
+      const id = item.name.replace("pdf:", "");
+      const isCatalog = id.startsWith("catalogomistiko");
+      return {
+        id,
+        title: item.metadata?.title || (isCatalog ? "Catalogo Mistiko" : "PDF de precios"),
+        filename: item.metadata?.filename || (isCatalog ? "catalogomistiko.pdf" : "precios-mistiko.pdf"),
+        size: item.metadata?.size || (isCatalog ? 1016790 : 0),
+        uploadedAt: item.metadata?.uploadedAt || "",
+        url: `/api/pdfs/${id}`
+      };
+    })
     .sort((a, b) => String(b.uploadedAt).localeCompare(String(a.uploadedAt)));
 
   return json({ items });

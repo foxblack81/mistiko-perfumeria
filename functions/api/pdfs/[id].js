@@ -6,7 +6,7 @@ export async function onRequestGet({ env, params }) {
   const value = await env.MISTIKO_PRICE_PDFS.getWithMetadata(key, { type: "arrayBuffer" });
   if (!value.value) return new Response("PDF no encontrado", { status: 404 });
 
-  const filename = value.metadata?.filename || "precios-mistiko.pdf";
+  const filename = value.metadata?.filename || (id.startsWith("catalogomistiko") ? "catalogomistiko.pdf" : "precios-mistiko.pdf");
   return new Response(value.value, {
     headers: {
       "Content-Type": "application/pdf",

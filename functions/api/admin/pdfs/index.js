@@ -41,24 +41,27 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Selecciona un archivo PDF." }, { status: 400 });
   }
 
-  if (file.type !== "application/pdf" && !String(file.name || "").toLowerCase().endsWith(".pdf")) {
+  const filename = String(file.name || "precios-mistiko.pdf").replace(/[^\w.\- ()]/g, "");
+  const contentType = String(file.type || "application/pdf");
+  const size = Number(file.size || 0);
+
+  if (contentType !== "application/pdf" && !filename.toLowerCase().endsWith(".pdf")) {
     return json({ error: "Solo se permiten archivos PDF." }, { status: 400 });
   }
 
-  if (file.size > 20 * 1024 * 1024) {
+  if (size > 20 * 1024 * 1024) {
     return json({ error: "El PDF debe pesar menos de 20 MB." }, { status: 400 });
   }
 
   const id = `${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
   const key = `pdf:${id}`;
-  const filename = String(file.name || "precios-mistiko.pdf").replace(/[^\w.\- ()]/g, "");
   const value = await file.arrayBuffer();
 
   await env.MISTIKO_PRICE_PDFS.put(key, value, {
     metadata: {
       title,
       filename,
-      size: file.size,
+      size,
       uploadedAt: new Date().toISOString()
     }
   });
@@ -69,7 +72,7 @@ export async function onRequestPost({ request, env }) {
       id,
       title,
       filename,
-      size: file.size,
+      size,
       url: `/api/pdfs/${id}`
     }
   });
