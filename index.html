@@ -463,18 +463,38 @@
 
     .kit-slide img {
       width: 100%;
-      height: 390px;
+      height: 300px;
       object-fit: cover;
       filter: grayscale(.12) contrast(1.03);
     }
 
     .kit-slide figcaption {
-      padding: 16px 18px;
+      padding: 18px;
       color: var(--red);
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-size: .8rem;
+    }
+
+    .kit-slide h3 {
+      margin-bottom: 12px;
+      color: var(--red);
+      font-size: 1.18rem;
+    }
+
+    .kit-price {
+      display: grid;
+      gap: 7px;
+      margin: 0 0 12px;
+      padding: 0;
+      list-style: none;
+      color: rgba(23, 23, 23, .82);
+      font-size: .92rem;
+      font-weight: 800;
+    }
+
+    .kit-note {
+      margin: 0;
+      color: rgba(23, 23, 23, .68);
+      font-size: .86rem;
+      font-weight: 700;
     }
 
     @keyframes kitSlide {
@@ -769,7 +789,7 @@
       }
 
       .kit-slide img {
-        height: 320px;
+        height: 280px;
       }
 
       .section {
@@ -924,60 +944,246 @@
         <div class="kit-carousel" aria-label="Carrusel automatico de kits de perfumeria Mistiko">
           <div class="kit-track">
             <figure class="kit-slide">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg" alt="Kit de perfumeria Mistiko imagen 1">
-              <figcaption>Kit Mistiko</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto1.jpeg" alt="Kit Singler 1oz">
+              <figcaption>
+                <h3>Kit Singler 1oz</h3>
+                <ul class="kit-price">
+                  <li>6 unidades: $48.000</li>
+                  <li>12 unidades: $90.000</li>
+                  <li>20 unidades: $140.000</li>
+                  <li>50 unidades: $340.000</li>
+                  <li>100 unidades: $680.000</li>
+                </ul>
+                <p class="kit-note">Se obsequian feromonas y fundas o cajas de presentacion.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg" alt="Kit de perfumeria Mistiko imagen 2">
-              <figcaption>Insumos premium</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto2.jpeg" alt="Kit Trinity 1oz">
+              <figcaption>
+                <h3>Kit Trinity 1oz</h3>
+                <ul class="kit-price">
+                  <li>6 unidades: $45.000</li>
+                  <li>12 unidades: $80.000</li>
+                  <li>20 unidades: $130.000</li>
+                </ul>
+                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg" alt="Kit de perfumeria Mistiko imagen 3">
-              <figcaption>Alta rotacion</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto3.jpeg" alt="Kit Cartier 1oz">
+              <figcaption>
+                <h3>Kit Cartier 1oz</h3>
+                <ul class="kit-price">
+                  <li>6 unidades: $50.000</li>
+                  <li>12 unidades: $95.000</li>
+                  <li>20 unidades: $150.000</li>
+                </ul>
+                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen15.jpeg" alt="Kit de perfumeria Mistiko imagen 4">
-              <figcaption>Listo para vender</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto4.jpeg" alt="Kit Bala 1oz">
+              <figcaption>
+                <h3>Kit Bala 1oz</h3>
+                <ul class="kit-price">
+                  <li>6 unidades: $50.000</li>
+                  <li>12 unidades: $95.000</li>
+                  <li>20 unidades: $150.000</li>
+                </ul>
+                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen16.jpeg" alt="Kit de perfumeria Mistiko imagen 5">
-              <figcaption>Emprendimiento</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto5.jpeg" alt="Kit Maletin emprendimiento 1oz">
+              <figcaption>
+                <h3>Kit Maletin emprendimiento 1oz</h3>
+                <ul class="kit-price">
+                  <li>Incluye maletin</li>
+                  <li>20 perfumes en presentacion Singler</li>
+                  <li>20 fundas o cajas de presentacion</li>
+                </ul>
+              </figcaption>
             </figure>
             <figure class="kit-slide">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen17.jpeg" alt="Kit de perfumeria Mistiko imagen 6">
-              <figcaption>Esencias premium</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto6.jpeg" alt="Kit Maletines">
+              <figcaption>
+                <h3>Kit Maletines</h3>
+                <ul class="kit-price">
+                  <li>Kit Maletin Emprendedor: $230.000</li>
+                  <li>20 perfumes Singler</li>
+                  <li>20 fundas o cajas de presentacion</li>
+                  <li>Maletin para transportar perfumes</li>
+                  <li>Kit 24 probadores con maletin</li>
+                </ul>
+              </figcaption>
             </figure>
             <figure class="kit-slide">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen18.jpeg" alt="Kit de perfumeria Mistiko imagen 7">
-              <figcaption>Recompra</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto7.jpeg" alt="Insumos de perfumeria">
+              <figcaption>
+                <h3>Insumos</h3>
+                <p class="kit-note">Insumos para quienes desean aprender el proceso de preparacion y producir de manera independiente.</p>
+              </figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto8.jpeg" alt="Kit preparacion 20 perfumes 1oz">
+              <figcaption>
+                <h3>Kit preparacion 20 perfumes 1oz</h3>
+                <ul class="kit-price">
+                  <li>20 frascos Singler + Cartier, Bala o Trinity</li>
+                  <li>1oz de feromonas</li>
+                  <li>10 referencias de fragancias por 30gr c/u</li>
+                  <li>20 fundas + 500gr diluyente + stickers</li>
+                  <li>Precio: $140.000</li>
+                </ul>
+              </figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto9.jpeg" alt="Kit preparacion 40 perfumes 1oz">
+              <figcaption>
+                <h3>Kit preparacion 40 perfumes 1oz</h3>
+                <ul class="kit-price">
+                  <li>40 frascos Singler + Cartier, Bala o Trinity</li>
+                  <li>1oz de feromonas</li>
+                  <li>20 referencias de fragancias por 30gr c/u</li>
+                  <li>40 fundas + 1 litro de diluyente + stickers</li>
+                  <li>Precio: $270.000</li>
+                </ul>
+              </figcaption>
+            </figure>
+            <figure class="kit-slide">
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto10.jpeg" alt="Kit preparacion 100 perfumes 1oz">
+              <figcaption>
+                <h3>Kit preparacion 100 perfumes 1oz</h3>
+                <ul class="kit-price">
+                  <li>100 frascos Singler + Cartier, Bala o Trinity</li>
+                  <li>1oz de feromonas</li>
+                  <li>25 referencias de fragancias por 60gr c/u</li>
+                  <li>100 fundas + 2 litros de diluyente</li>
+                  <li>Precio: $600.000</li>
+                </ul>
+                <p class="kit-note">La gramera tiene un valor adicional de $30.000.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg" alt="">
-              <figcaption>Kit Mistiko</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto1.jpeg" alt="">
+              <figcaption>
+                <h3>Kit Singler 1oz</h3>
+                <ul class="kit-price">
+                  <li>6 unidades: $48.000</li>
+                  <li>12 unidades: $90.000</li>
+                  <li>20 unidades: $140.000</li>
+                  <li>50 unidades: $340.000</li>
+                  <li>100 unidades: $680.000</li>
+                </ul>
+                <p class="kit-note">Se obsequian feromonas y fundas o cajas de presentacion.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg" alt="">
-              <figcaption>Insumos premium</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto2.jpeg" alt="">
+              <figcaption>
+                <h3>Kit Trinity 1oz</h3>
+                <ul class="kit-price">
+                  <li>6 unidades: $45.000</li>
+                  <li>12 unidades: $80.000</li>
+                  <li>20 unidades: $130.000</li>
+                </ul>
+                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg" alt="">
-              <figcaption>Alta rotacion</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto3.jpeg" alt="">
+              <figcaption>
+                <h3>Kit Cartier 1oz</h3>
+                <ul class="kit-price">
+                  <li>6 unidades: $50.000</li>
+                  <li>12 unidades: $95.000</li>
+                  <li>20 unidades: $150.000</li>
+                </ul>
+                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen15.jpeg" alt="">
-              <figcaption>Listo para vender</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto4.jpeg" alt="">
+              <figcaption>
+                <h3>Kit Bala 1oz</h3>
+                <ul class="kit-price">
+                  <li>6 unidades: $50.000</li>
+                  <li>12 unidades: $95.000</li>
+                  <li>20 unidades: $150.000</li>
+                </ul>
+                <p class="kit-note">Se obsequian feromonas y fundas de presentacion.</p>
+              </figcaption>
             </figure>
             <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen16.jpeg" alt="">
-              <figcaption>Emprendimiento</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto5.jpeg" alt="">
+              <figcaption>
+                <h3>Kit Maletin emprendimiento 1oz</h3>
+                <ul class="kit-price">
+                  <li>Incluye maletin</li>
+                  <li>20 perfumes en presentacion Singler</li>
+                  <li>20 fundas o cajas de presentacion</li>
+                </ul>
+              </figcaption>
             </figure>
             <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen17.jpeg" alt="">
-              <figcaption>Esencias premium</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto6.jpeg" alt="">
+              <figcaption>
+                <h3>Kit Maletines</h3>
+                <ul class="kit-price">
+                  <li>Kit Maletin Emprendedor: $230.000</li>
+                  <li>20 perfumes Singler</li>
+                  <li>20 fundas o cajas de presentacion</li>
+                  <li>Maletin para transportar perfumes</li>
+                  <li>Kit 24 probadores con maletin</li>
+                </ul>
+              </figcaption>
             </figure>
             <figure class="kit-slide" aria-hidden="true">
-              <img src="https://emprendeconperfumeria.com/images/Banners/Imagen18.jpeg" alt="">
-              <figcaption>Recompra</figcaption>
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto7.jpeg" alt="">
+              <figcaption>
+                <h3>Insumos</h3>
+                <p class="kit-note">Insumos para quienes desean aprender el proceso de preparacion y producir de manera independiente.</p>
+              </figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto8.jpeg" alt="">
+              <figcaption>
+                <h3>Kit preparacion 20 perfumes 1oz</h3>
+                <ul class="kit-price">
+                  <li>20 frascos Singler + Cartier, Bala o Trinity</li>
+                  <li>1oz de feromonas</li>
+                  <li>10 referencias de fragancias por 30gr c/u</li>
+                  <li>20 fundas + 500gr diluyente + stickers</li>
+                  <li>Precio: $140.000</li>
+                </ul>
+              </figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto9.jpeg" alt="">
+              <figcaption>
+                <h3>Kit preparacion 40 perfumes 1oz</h3>
+                <ul class="kit-price">
+                  <li>40 frascos Singler + Cartier, Bala o Trinity</li>
+                  <li>1oz de feromonas</li>
+                  <li>20 referencias de fragancias por 30gr c/u</li>
+                  <li>40 fundas + 1 litro de diluyente + stickers</li>
+                  <li>Precio: $270.000</li>
+                </ul>
+              </figcaption>
+            </figure>
+            <figure class="kit-slide" aria-hidden="true">
+              <img src="https://emprendeconperfumeria.com/images/Productos/producto10.jpeg" alt="">
+              <figcaption>
+                <h3>Kit preparacion 100 perfumes 1oz</h3>
+                <ul class="kit-price">
+                  <li>100 frascos Singler + Cartier, Bala o Trinity</li>
+                  <li>1oz de feromonas</li>
+                  <li>25 referencias de fragancias por 60gr c/u</li>
+                  <li>100 fundas + 2 litros de diluyente</li>
+                  <li>Precio: $600.000</li>
+                </ul>
+                <p class="kit-note">La gramera tiene un valor adicional de $30.000.</p>
+              </figcaption>
             </figure>
           </div>
         </div>
