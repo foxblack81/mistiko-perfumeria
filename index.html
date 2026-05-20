@@ -1729,6 +1729,24 @@
 
   <a class="mobile-cta" href="https://wa.me/573224929886?text=Hola%20Mistiko%2C%20quiero%20informacion%20sobre%20los%20kits%20de%20perfumeria.">Contactanos</a>
   <script>
+    (() => {
+      const payload = JSON.stringify({
+        path: window.location.pathname,
+        referrer: document.referrer
+      });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("/api/visits", new Blob([payload], { type: "application/json" }));
+        return;
+      }
+      fetch("/api/visits", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+        keepalive: true
+      }).catch(() => {});
+    })();
+  </script>
+  <script>
     (async () => {
       const carousel = document.querySelector('.kit-carousel');
       if (!carousel) return;

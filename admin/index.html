@@ -185,10 +185,74 @@
       grid-column: 1 / -1;
     }
 
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .stat-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .05);
+      padding: 16px;
+    }
+
+    .stat-card span {
+      display: block;
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .stat-card strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--silver);
+      font-family: Cinzel, Georgia, serif;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .visit-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: .9rem;
+    }
+
+    .visit-table th,
+    .visit-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .visit-table th {
+      color: var(--silver);
+      font-size: .74rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .visit-table td {
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
     @media (max-width: 760px) {
-      .grid, .topbar, .kit-fields {
+      .grid, .topbar, .kit-fields, .stats-grid {
         grid-template-columns: 1fr;
         display: grid;
+      }
+
+      .visit-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
       }
     }
   </style>
@@ -246,6 +310,32 @@
       <p class="status" id="kitStatus"></p>
       <div class="kit-list" id="kitList"></div>
     </section>
+
+    <section class="panel hidden" id="visitPanel" style="margin-top:22px;">
+      <h2>Visitas de la web</h2>
+      <p>Conteo de personas que visitan la pagina, con IP, fecha, ruta y ubicacion detectada por Cloudflare.</p>
+      <div class="pdf-actions">
+        <button id="refreshVisits" type="button">Actualizar visitas</button>
+      </div>
+      <p class="status" id="visitStatus"></p>
+      <div class="stats-grid">
+        <div class="stat-card"><span>Total visitas</span><strong id="totalVisits">0</strong></div>
+        <div class="stat-card"><span>IPs unicas recientes</span><strong id="uniqueIps">0</strong></div>
+        <div class="stat-card"><span>Registros recientes</span><strong id="recentVisits">0</strong></div>
+      </div>
+      <table class="visit-table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>IP</th>
+            <th>Ruta</th>
+            <th>Ubicacion</th>
+            <th>Navegador</th>
+          </tr>
+        </thead>
+        <tbody id="visitList"></tbody>
+      </table>
+    </section>
   </main>
 
   <script>
@@ -256,6 +346,9 @@
     const kitPanel = document.querySelector("#kitPanel");
     const kitList = document.querySelector("#kitList");
     const kitStatus = document.querySelector("#kitStatus");
+    const visitPanel = document.querySelector("#visitPanel");
+    const visitStatus = document.querySelector("#visitStatus");
+    const visitList = document.querySelector("#visitList");
     const authKey = "mistikoAdminAuth";
 
     const getAuth = () => sessionStorage.getItem(authKey) || "";
@@ -263,6 +356,7 @@
       loginForm.classList.toggle("hidden", loggedIn);
       uploadForm.classList.toggle("hidden", !loggedIn);
       kitPanel.classList.toggle("hidden", !loggedIn);
+      visitPanel.classList.toggle("hidden", !loggedIn);
     };
 
     const formatSize = (size) => {
@@ -354,6 +448,44 @@
       renderKitEditors(data.items || []);
     }
 
+    const formatDate = (value) => {
+      if (!value) return "";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleString("es-CO", { dateStyle: "short", timeStyle: "short" });
+    };
+
+    async function loadVisits() {
+      visitStatus.textContent = "Cargando visitas...";
+      const response = await fetch("/api/visits", {
+        headers: { Authorization: getAuth() },
+        cache: "no-store"
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        visitStatus.textContent = data.error || "No se pudieron cargar las visitas.";
+        return;
+      }
+
+      document.querySelector("#totalVisits").textContent = data.total || 0;
+      document.querySelector("#uniqueIps").textContent = data.uniqueRecentIps || 0;
+      document.querySelector("#recentVisits").textContent = data.recentCount || 0;
+      visitList.innerHTML = "";
+
+      (data.items || []).forEach((visit) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${escapeHtml(formatDate(visit.visitedAt))}</td>
+          <td>${escapeHtml(visit.ip)}</td>
+          <td>${escapeHtml(visit.path)}</td>
+          <td>${escapeHtml([visit.city, visit.region, visit.country].filter(Boolean).join(", "))}</td>
+          <td>${escapeHtml(visit.userAgent)}</td>
+        `;
+        visitList.appendChild(row);
+      });
+      visitStatus.textContent = "Visitas actualizadas.";
+    }
+
     loginForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const user = document.querySelector("#user").value.trim();
@@ -363,6 +495,9 @@
       statusBox.textContent = "Sesion iniciada.";
       loadKits().catch(() => {
         kitStatus.textContent = "No se pudieron cargar los kits.";
+      });
+      loadVisits().catch(() => {
+        visitStatus.textContent = "No se pudieron cargar las visitas.";
       });
     });
 
@@ -458,6 +593,12 @@
       renderKitEditors(data.items || []);
     });
 
+    document.querySelector("#refreshVisits").addEventListener("click", () => {
+      loadVisits().catch(() => {
+        visitStatus.textContent = "No se pudieron cargar las visitas.";
+      });
+    });
+
     document.querySelector("#logout").addEventListener("click", () => {
       sessionStorage.removeItem(authKey);
       setLoggedIn(false);
@@ -468,6 +609,9 @@
     if (getAuth()) {
       loadKits().catch(() => {
         kitStatus.textContent = "No se pudieron cargar los kits.";
+      });
+      loadVisits().catch(() => {
+        visitStatus.textContent = "No se pudieron cargar las visitas.";
       });
     }
   </script>
