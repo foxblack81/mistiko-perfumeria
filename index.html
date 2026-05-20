@@ -346,29 +346,53 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .gallery figure {
-      min-height: 245px;
+    .photo-story {
       margin: 0;
       border: 1px solid var(--line);
-      background:
-        linear-gradient(to bottom, rgba(255, 255, 255, .02), rgba(0, 0, 0, .34)),
-        var(--image) center / cover;
+      background: rgba(255, 255, 255, .92);
       box-shadow: 0 16px 40px rgba(0, 0, 0, .12);
-      filter: grayscale(.18);
+      overflow: hidden;
     }
 
-    .gallery figure:nth-child(2),
-    .gallery figure:nth-child(5) {
-      transform: translateY(26px);
+    .photo-story.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(280px, .82fr) minmax(0, 1fr);
+      align-items: center;
     }
 
-    .gallery figure:nth-child(3),
-    .gallery figure:nth-child(6) {
-      transform: translateY(52px);
+    .photo-story img {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      filter: grayscale(.12) contrast(1.04);
+    }
+
+    .photo-story.featured img {
+      height: 520px;
+    }
+
+    .photo-story figcaption {
+      padding: 26px;
+    }
+
+    .photo-story h3 {
+      margin-bottom: 14px;
+      color: var(--red);
+      font-size: clamp(1.35rem, 3vw, 2.25rem);
+    }
+
+    .photo-story p {
+      margin: 0 0 14px;
+      color: rgba(23, 23, 23, .78);
+    }
+
+    .photo-story p:last-child {
+      margin-bottom: 0;
     }
 
     .video-block {
@@ -629,13 +653,15 @@
         grid-template-columns: 1fr;
       }
 
-      .gallery figure,
-      .gallery figure:nth-child(2),
-      .gallery figure:nth-child(3),
-      .gallery figure:nth-child(5),
-      .gallery figure:nth-child(6) {
-        min-height: 320px;
-        transform: none;
+      .photo-story.featured {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+      }
+
+      .photo-story img,
+      .photo-story.featured img {
+        height: auto;
+        aspect-ratio: 4 / 5;
       }
 
       .kit-track {
@@ -769,14 +795,68 @@
           </div>
           <p class="section-lead">Las imagenes se mantienen en el mismo bloque visual del sitio original, con una distribucion mas elegante para escritorio y movil.</p>
         </div>
-        <div class="gallery" aria-label="Imagenes originales de kits Mistiko">
-          <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg')"></figure>
-          <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg')"></figure>
-          <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg')"></figure>
-          <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen15.jpeg')"></figure>
-          <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen16.jpeg')"></figure>
-          <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen17.jpeg')"></figure>
-          <figure style="--image: url('https://emprendeconperfumeria.com/images/Banners/Imagen18.jpeg')"></figure>
+        <div class="gallery" aria-label="Imagenes originales de kits Mistiko con explicacion">
+          <figure class="photo-story featured">
+            <img src="https://emprendeconperfumeria.com/images/Banners/Imagen12.jpeg" alt="Kit de perfumeria artesanal Mistiko">
+            <figcaption>
+              <h3>Emprende con perfumeria artesanal</h3>
+              <p>Kits listos para vender y un modelo de negocio probado, escalable y rentable.</p>
+              <p>La forma mas practica de empezar tu emprendimiento de perfumeria: kits de alta rotacion, con calidad que impulsa la recompra y productos listos para la venta.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="photo-story">
+            <img src="https://emprendeconperfumeria.com/images/Banners/Imagen13.jpeg" alt="Modelo de emprendimiento Mistiko">
+            <figcaption>
+              <h3>En que consiste este emprendimiento</h3>
+              <p>Es un modelo de emprendimiento basado en la venta de kits de perfumes artesanales. Los kits se entregan elaborados y listos para la venta, lo que permite iniciar la actividad comercial desde el primer momento.</p>
+              <p>El emprendedor puede enfocarse en la venta y comercializacion del perfume.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="photo-story">
+            <img src="https://emprendeconperfumeria.com/images/Banners/Imagen14.jpeg" alt="Kits de insumos para preparacion de perfumes">
+            <figcaption>
+              <h3>Kits de insumos para preparacion</h3>
+              <p>De forma complementaria, existe una linea de kits de insumos para preparacion, pensada para quienes desean aprender el proceso de elaboracion de perfumes y producir de manera independiente.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="photo-story">
+            <img src="https://emprendeconperfumeria.com/images/Banners/Imagen15.jpeg" alt="Perfumes de alta concentracion Mistiko">
+            <figcaption>
+              <h3>Alta concentracion y recompra</h3>
+              <p>Perfumes elaborados con alta concentracion de esencia, mas del 50%, e incluyen feromonas.</p>
+              <p>La calidad del producto ayuda a generar confianza, recompra y una experiencia mas profesional para el cliente final.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="photo-story">
+            <img src="https://emprendeconperfumeria.com/images/Banners/Imagen16.jpeg" alt="Modelo practico de emprendimiento en perfumeria">
+            <figcaption>
+              <h3>Estructura practica y sostenible</h3>
+              <p>No se trata de un curso teorico ni de una franquicia.</p>
+              <p>Es una estructura practica, probada y sostenible de emprendimiento, disenada para iniciar un negocio real en la venta de perfumes.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="photo-story">
+            <img src="https://emprendeconperfumeria.com/images/Banners/Imagen17.jpeg" alt="Acompanamiento y recompra para emprendedores Mistiko">
+            <figcaption>
+              <h3>Que incluye el modelo</h3>
+              <p>Incluye kit segun la modalidad elegida, insumos o productos listos para venta, acompanamiento inicial, orientacion practica para comercializar y acceso a recompra de productos e insumos.</p>
+              <p>Los detalles especificos se validan directamente por WhatsApp.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="photo-story">
+            <img src="https://emprendeconperfumeria.com/images/Banners/Imagen18.jpeg" alt="Experiencia real en perfumeria Mistiko">
+            <figcaption>
+              <h3>Experiencia real en perfumeria</h3>
+              <p>El sistema se basa en experiencia aplicada en elaboracion, comercializacion y recompra de clientes.</p>
+              <p>No es un esquema teorico ni improvisado; es un modelo construido desde la practica real del negocio de perfumeria.</p>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
